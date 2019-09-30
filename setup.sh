@@ -125,7 +125,7 @@ sed -i "s/YourCDSWDomain/cdsw.$PUBLIC_IP.nip.io/g" $TEMPLATE
 sed -i "s/YourPrivateIP/`hostname -I | tr -d '[:space:]'`/g" $TEMPLATE
 sed -i "s#YourDockerDevice#$DOCKERDEVICE#g" $TEMPLATE
 
-sed -i "s/YourHostname/`hostname -f`/g" ~scripts/create_cluster.py
+sed -i "s/YourHostname/`hostname -f`/g" scripts/create_cluster.py
 
 python scripts/create_cluster.py $TEMPLATE $USERNAME $PASSWORD
 
