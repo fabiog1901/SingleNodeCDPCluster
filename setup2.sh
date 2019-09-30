@@ -135,6 +135,7 @@ done
 echo "-- Now CM is started and the next step is to automate using the CM API"
 
 yum install -y epel-release
+yum install -y python-pip
 pip install --upgrade pip cm_client
 
 sed -i "s/YourHostname/`hostname -f`/g" $TEMPLATE
