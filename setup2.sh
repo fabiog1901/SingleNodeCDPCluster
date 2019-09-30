@@ -47,7 +47,7 @@ setenforce 0
 sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 
 
-echo "-- Install CM and pgsql"
+echo "-- Install CM and MariaDB"
 
 ## CM 7
 cat - >/etc/yum.repos.d/cloudera-manager.repo <<EOF
