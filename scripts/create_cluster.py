@@ -45,8 +45,8 @@ api_client = cm_client.ApiClient("http://localhost:7180/api/v40")
 cm_api = cm_client.ClouderaManagerResourceApi(api_client)
 
 # accept trial licence
-#cm_api.begin_trial()
-'''
+cm_api.begin_trial()
+
 # Install CM Agent on host
 with open ("/root/myRSAkey", "r") as f:
     key = f.read()
@@ -55,7 +55,7 @@ print(key)
 instargs = cm_client.ApiHostInstallArguments(host_names=['fabio-cdp-dc.c.gcp-se.internal'], 
                                              user_name='root', 
                                              private_key=key, 
-                                             cm_repo_url=('https://%s:%s@archive.cloudera.com/p/cm7/7.x.0/' % (sys.argv[1], sys.argv[2])), 
+                                             cm_repo_url=('https://%s:%s@archive.cloudera.com/p/cm7/7.x.0/' % (sys.argv[2], sys.argv[3])), 
                                              java_install_strategy='NONE', 
                                              ssh_port=22, 
                                              passphrase='')
@@ -65,7 +65,7 @@ wait(cmd)
 
 
 
-'''
+
     
 # create MGMT/CMS
 mgmt_api = cm_client.MgmtServiceResourceApi(api_client)

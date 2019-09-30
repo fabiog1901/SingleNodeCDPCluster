@@ -47,7 +47,7 @@ setenforce 0
 sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 
 
-echo "-- Install CM and MariaDB repo"
+echo "-- Install CM and pgsql"
 
 ## CM 7
 cat - >/etc/yum.repos.d/cloudera-manager.repo <<EOF
@@ -63,7 +63,8 @@ yum clean all
 rm -rf /var/cache/yum/
 yum repolist
 
-yum install -y cloudera-manager-daemons cloudera-manager-server
+## PostgreSQL
+yum install -y cloudera-manager-agent cloudera-manager-daemons cloudera-manager-server
 yum install -y postgresql-server python-pip
 pip install psycopg2==2.7.5 --ignore-installed
 echo 'LC_ALL="en_US.UTF-8"' >> /etc/locale.conf
@@ -115,9 +116,7 @@ done
 echo "-- Now CM is started and the next step is to automate using the CM API"
 
 yum install -y epel-release
-yum install -y python-pip
-pip install --upgrade pip
-pip install cm_client
+pip install --upgrade pip cm_client
 
 sed -i "s/YourHostname/`hostname -f`/g" ~/OneNodeCDHCluster/$TEMPLATE
 sed -i "s/YourCDSWDomain/cdsw.$PUBLIC_IP.nip.io/g" ~/OneNodeCDHCluster/$TEMPLATE
@@ -126,5 +125,5 @@ sed -i "s#YourDockerDevice#$DOCKERDEVICE#g" ~/OneNodeCDHCluster/$TEMPLATE
 
 sed -i "s/YourHostname/`hostname -f`/g" ~/OneNodeCDHCluster/scripts/create_cluster.py
 
-python ~/OneNodeCDHCluster/scripts/create_cluster.py $TEMPLATE
+python ~/OneNodeCDHCluster/scripts/create_cluster.py $TEMPLATE $USERNAME $PASSWORD
 
