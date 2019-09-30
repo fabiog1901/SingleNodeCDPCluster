@@ -8,17 +8,9 @@ echo "echo never > /sys/kernel/mm/transparent_hugepage/defrag" >> /etc/rc.d/rc.l
 echo  "vm.swappiness = 1" >> /etc/sysctl.conf
 sysctl vm.swappiness=1
 timedatectl set-timezone UTC
-# CDSW requires Centos 7.5, so we trick it to believe it is...
-echo "CentOS Linux release 7.5.1810 (Core)" > /etc/redhat-release
 
 echo "-- Install Java OpenJDK8 and other tools"
 yum install -y java-1.8.0-openjdk-devel vim wget curl git bind-utils
-
-echo "-- Installing requirements for Stream Messaging Manager"
-yum install -y gcc-c++ make 
-curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash - 
-yum install nodejs -y
-npm install forever -g 
 
 # Check input parameters
 case "$1" in
@@ -33,16 +25,16 @@ case "$1" in
         gcp)
             ;;
         *)
-            echo $"Usage: $0 {aws|azure|gcp} template-file [docker-device]"
-            echo $"example: ./setup.sh azure default_template.json"
-            echo $"example: ./setup.sh aws cdsw_template.json /dev/xvdb"
+            echo $"Usage: $0 {aws|azure|gcp} template-file username password [docker-device]"
+            echo $"example: ./setup.sh azure templates/essential.json fabio my_pass"
+            echo $"example: ./setup.sh aws template/cml.json fabio my_pass /dev/xvdb"
             exit 1
 esac
 
 TEMPLATE=$2
-# ugly, but for now the docker device has to be put by the user
-DOCKERDEVICE=$3
-
+USERNAME=$3
+PASSWORD=$4
+DOCKERDEVICE=$5
 
 echo "-- Configure networking"
 PUBLIC_IP=`curl https://api.ipify.org/`
@@ -56,39 +48,37 @@ sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 
 
 echo "-- Install CM and MariaDB repo"
-wget https://archive.cloudera.com/cm6/6.3.0/redhat7/yum/cloudera-manager.repo -P /etc/yum.repos.d/
 
-## MariaDB 10.1
-cat - >/etc/yum.repos.d/MariaDB.repo <<EOF
-[mariadb]
-name = MariaDB
-baseurl = http://yum.mariadb.org/10.1/centos7-amd64
-gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
-gpgcheck=1
+## CM 7
+cat - >/etc/yum.repos.d/cloudera-manager.repo <<EOF
+[cm]
+name=cm
+enabled=1
+type=rpm-md
+baseurl=https://$USERNAME:$PASSWORD@archive.cloudera.com/p/cm7/7.x.0/redhat7/yum/
+gpgcheck=0
 EOF
 
 yum clean all
 rm -rf /var/cache/yum/
 yum repolist
 
-yum install -y cloudera-manager-daemons cloudera-manager-agent cloudera-manager-server
-yum install -y MariaDB-server MariaDB-client
-cat conf/mariadb.config > /etc/my.cnf
+yum install -y cloudera-manager-daemons cloudera-manager-server
+yum install -y postgresql-server python-pip
+pip install psycopg2==2.7.5 --ignore-installed
+echo 'LC_ALL="en_US.UTF-8"' >> /etc/locale.conf
+sudo su -l postgres -c "postgresql-setup initdb"
+cat conf/pg_hba.conf > /var/lib/pgsql/data/pg_hba.conf
+cat conf/postgresql.conf > /var/lib/pgsql/data/postgresql.conf
 
 
-echo "--Enable and start MariaDB"
-systemctl enable mariadb
-systemctl start mariadb
+echo "--Enable and start pgsql"
+systemctl enable postgresql
+systemctl restart postgresql
 
-echo "-- Install JDBC connector"
-wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.46.tar.gz -P ~
-tar zxf ~/mysql-connector-java-5.1.46.tar.gz -C ~
-mkdir -p /usr/share/java/
-cp ~/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /usr/share/java/mysql-connector-java.jar
-rm -rf ~/mysql-connector-java-5.1.46*
 
 echo "-- Create DBs required by CM"
-mysql -u root < ~/OneNodeCDHCluster/scripts/create_db.sql
+sudo -u postgres psql < scripts/pgsql_create_db.sql
 
 echo "-- Secure MariaDB"
 mysql -u root < ~/OneNodeCDHCluster/scripts/secure_mariadb.sql
