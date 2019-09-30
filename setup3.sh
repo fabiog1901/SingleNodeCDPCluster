@@ -113,18 +113,17 @@ cat conf/pg_hba.conf > /var/lib/pgsql/data/pg_hba.conf
 cat conf/postgresql.conf > /var/lib/pgsql/data/postgresql.conf
 
 
+echo "--Enable and start pgsql"
+systemctl enable postgresql
+systemctl restart postgresql
+
+
 echo "-- Create DBs required by CM"
 sudo -u postgres psql <<EOF 
 CREATE DATABASE ranger;
 CREATE USER rangeradmin WITH PASSWORD 'supersecret1';
 GRANT ALL PRIVILEGES ON DATABASE ranger TO rangeradmin;
 EOF
-
-
-
-echo "--Enable and start pgsql"
-systemctl enable postgresql
-systemctl restart postgresql
 
 
 
