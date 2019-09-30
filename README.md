@@ -5,6 +5,7 @@ This script automatically sets up a CDP cluster on the public cloud on a single 
 As this cluster is meant to be used for demos, experimenting, training, and workshops, it doesn't setup Kerberos and TLS.
 
 ### Configuration and installation
+
 - add 2 inbound rules to the Security Group:
   - to allow your IP only, for all ports.
   - to allow the VM's own IP, for all ports.
@@ -18,20 +19,16 @@ cd SingleNodeCDPCluster
 ```
 
 The script `setup.sh` takes 5 arguments:
-- the cloud provider name: `aws`,`azure`,`gcp`.
-- the template file.
-- Username.
-- Password.
+- the cloud provider name: `aws`,`azure`,`gcp`;
+- the template file;
+- the username;
+- the password;
 - OPTIONAL the Docker Device disk mount point.
 
-Example: create cluster without CDSW on AWS using default_template.json
+Example: create cluster on AWS using `base.json`
+
 ```bash
 ./setup.sh aws templates/base.json my_user my_pass
-```
-
-Example: create cluster with CDSW on Azure using cdsw_template.json
-```bash
-./setup.sh azure templates/base.json my_user my_pass /dev/sdc
 ```
 
 Wait until the script finishes, check for any error.
