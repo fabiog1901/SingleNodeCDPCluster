@@ -66,9 +66,11 @@ yum repolist
 ## PostgreSQL
 yum install -y cloudera-manager-agent cloudera-manager-daemons cloudera-manager-server
 yum install -y postgresql-server python-pip
+
 pip install psycopg2==2.7.5 --ignore-installed
 echo 'LC_ALL="en_US.UTF-8"' >> /etc/locale.conf
 sudo su -l postgres -c "postgresql-setup initdb"
+
 cat conf/pg_hba.conf > /var/lib/pgsql/data/pg_hba.conf
 cat conf/postgresql.conf > /var/lib/pgsql/data/postgresql.conf
 
@@ -118,12 +120,12 @@ echo "-- Now CM is started and the next step is to automate using the CM API"
 yum install -y epel-release
 pip install --upgrade pip cm_client
 
-sed -i "s/YourHostname/`hostname -f`/g" ~/OneNodeCDHCluster/$TEMPLATE
-sed -i "s/YourCDSWDomain/cdsw.$PUBLIC_IP.nip.io/g" ~/OneNodeCDHCluster/$TEMPLATE
-sed -i "s/YourPrivateIP/`hostname -I | tr -d '[:space:]'`/g" ~/OneNodeCDHCluster/$TEMPLATE
-sed -i "s#YourDockerDevice#$DOCKERDEVICE#g" ~/OneNodeCDHCluster/$TEMPLATE
+sed -i "s/YourHostname/`hostname -f`/g" $TEMPLATE
+sed -i "s/YourCDSWDomain/cdsw.$PUBLIC_IP.nip.io/g" $TEMPLATE
+sed -i "s/YourPrivateIP/`hostname -I | tr -d '[:space:]'`/g" $TEMPLATE
+sed -i "s#YourDockerDevice#$DOCKERDEVICE#g" $TEMPLATE
 
-sed -i "s/YourHostname/`hostname -f`/g" ~/OneNodeCDHCluster/scripts/create_cluster.py
+sed -i "s/YourHostname/`hostname -f`/g" ~scripts/create_cluster.py
 
-python ~/OneNodeCDHCluster/scripts/create_cluster.py $TEMPLATE $USERNAME $PASSWORD
+python scripts/create_cluster.py $TEMPLATE $USERNAME $PASSWORD
 
