@@ -51,19 +51,17 @@ cm_api.begin_trial()
 with open ("/root/myRSAkey", "r") as f:
     key = f.read()
 
-print(key)
-instargs = cm_client.ApiHostInstallArguments(host_names=['fabio-cdp-dc.c.gcp-se.internal'], 
-                                             user_name='root', 
-                                             private_key=key, 
-                                             cm_repo_url=('https://%s:%s@archive.cloudera.com/p/cm7/7.x.0/' % (sys.argv[2], sys.argv[3])), 
-                                             java_install_strategy='NONE', 
-                                             ssh_port=22, 
-                                             passphrase='')
+instargs = cm_client.ApiHostInstallArguments(
+    host_names=['fabio-cdp-dc.c.gcp-se.internal'], 
+    user_name='root', 
+    private_key=key, 
+    cm_repo_url=('https://%s:%s@archive.cloudera.com/p/cm7/7.x.0/' % (sys.argv[2], sys.argv[3])), 
+    java_install_strategy='NONE', 
+    ssh_port=22, 
+    passphrase='')
 
 cmd = cm_api.host_install_command(body=instargs)
 wait(cmd)
-
-
 
 
     
@@ -81,7 +79,9 @@ mgmt_api.auto_configure()    # needed?
 mgmt_api.setup_cms(body=api_service)
 cmd = mgmt_api.start_command()
 wait(cmd)
-'''
+
+
+
 # create the cluster using the template
 with open(sys.argv[1]) as f:
     json_str = f.read()
@@ -90,4 +90,4 @@ Response = namedtuple("Response", "data")
 dst_cluster_template=api_client.deserialize(response=Response(json_str),response_type=cm_client.ApiClusterTemplate)
 cmd = cm_api.import_cluster_template(add_repositories=True, body=dst_cluster_template)
 wait(cmd)
-'''
+
