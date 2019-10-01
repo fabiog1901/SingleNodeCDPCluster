@@ -84,7 +84,7 @@
          },
          {
             "name":"ranger-RANGER_ADMIN-BASE-ranger_database_password",
-            "value":"BadPass#1"
+            "value":"cloudera"
          },
          {
             "name":"ranger-keyadmin_user_password",
