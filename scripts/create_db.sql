@@ -13,9 +13,6 @@ GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY 'cloudera';
 CREATE DATABASE metastore DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON metastore.* TO 'hive'@'%' IDENTIFIED BY 'cloudera';
 
-CREATE DATABASE sentry DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-GRANT ALL ON sentry.* TO 'sentry'@'%' IDENTIFIED BY 'cloudera';
-
 CREATE DATABASE nav DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON nav.* TO 'nav'@'%' IDENTIFIED BY 'cloudera';
 
