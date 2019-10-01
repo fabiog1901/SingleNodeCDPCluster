@@ -121,8 +121,8 @@ systemctl restart postgresql
 echo "-- Create DBs required by CM"
 sudo -u postgres psql <<EOF 
 CREATE DATABASE ranger;
-CREATE USER rangeradmin WITH PASSWORD 'cloudera';
-GRANT ALL PRIVILEGES ON DATABASE ranger TO rangeradmin;
+CREATE USER ranger WITH PASSWORD 'cloudera';
+GRANT ALL PRIVILEGES ON DATABASE ranger TO ranger;
 EOF
 
 
