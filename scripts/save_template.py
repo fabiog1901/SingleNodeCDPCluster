@@ -7,7 +7,7 @@ import json
 cm_client.configuration.username = 'admin'
 cm_client.configuration.password = 'admin'
 
-api_client = cm_client.ApiClient("http://localhost:7180/api/v32")
+api_client = cm_client.ApiClient("http://localhost:7180/api/v40")
 
 clusters_api_instance = cm_client.ClustersResourceApi(api_client)
 template = clusters_api_instance.export("OneNodeCluster")
