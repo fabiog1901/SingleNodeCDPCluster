@@ -47,7 +47,7 @@ setenforce 0
 sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 
 
-echo "-- Install CM and pgsql"
+echo "-- Install CM and MariaDB"
 
 ## CM 7
 cat - >/etc/yum.repos.d/cloudera-manager.repo <<EOF
@@ -59,12 +59,50 @@ baseurl=https://$USERNAME:$PASSWORD@archive.cloudera.com/p/cm7/7.x.0/redhat7/yum
 gpgcheck=0
 EOF
 
+## MariaDB 10.1
+cat - >/etc/yum.repos.d/MariaDB.repo <<EOF
+[mariadb]
+name = MariaDB
+baseurl = http://yum.mariadb.org/10.1/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+EOF
+
+
 yum clean all
 rm -rf /var/cache/yum/
 yum repolist
 
-## PostgreSQL
+## CM
 yum install -y cloudera-manager-agent cloudera-manager-daemons cloudera-manager-server
+
+## MariaDB
+yum install -y MariaDB-server MariaDB-client
+cat conf/mariadb.config > /etc/my.cnf
+
+echo "--Enable and start MariaDB"
+systemctl enable mariadb
+systemctl start mariadb
+
+echo "-- Install JDBC connector"
+wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.46.tar.gz -P ~
+tar zxf ~/mysql-connector-java-5.1.46.tar.gz -C ~
+mkdir -p /usr/share/java/
+cp ~/mysql-connector-java-5.1.46/mysql-connector-java-5.1.46-bin.jar /usr/share/java/mysql-connector-java.jar
+rm -rf ~/mysql-connector-java-5.1.46*
+
+echo "-- Create DBs required by CM"
+mysql -u root < scripts/create_db.sql
+
+echo "-- Secure MariaDB"
+mysql -u root < scripts/secure_mariadb.sql
+
+echo "-- Prepare CM database 'scm'"
+/opt/cloudera/cm/schema/scm_prepare_database.sh mysql scm scm cloudera
+
+
+
+## PostgreSQL
 yum install -y postgresql-server python-pip
 
 pip install psycopg2==2.7.5 --ignore-installed
@@ -81,10 +119,14 @@ systemctl restart postgresql
 
 
 echo "-- Create DBs required by CM"
-sudo -u postgres psql < scripts/pgsql_create_db.sql
+sudo -u postgres psql <<EOF 
+CREATE DATABASE ranger;
+CREATE USER rangeradmin WITH PASSWORD 'cloudera';
+GRANT ALL PRIVILEGES ON DATABASE ranger TO rangeradmin;
+EOF
 
-echo "-- Prepare CM database 'scm'"
-/opt/cloudera/cm/schema/scm_prepare_database.sh postgresql scm scm cloudera
+
+
 
 echo "-- Install CSDs"
 # install local CSDs
@@ -118,9 +160,12 @@ done
 echo "-- Now CM is started and the next step is to automate using the CM API"
 
 yum install -y epel-release
+yum install -y python-pip
 pip install --upgrade pip cm_client
 
 sed -i "s/YourHostname/`hostname -f`/g" $TEMPLATE
+sed -i "s/USERNAME/$USERNAME/g" $TEMPLATE
+sed -i "s/PASSWORD/$PASSWORD/g" $TEMPLATE
 sed -i "s/YourCDSWDomain/cdsw.$PUBLIC_IP.nip.io/g" $TEMPLATE
 sed -i "s/YourPrivateIP/`hostname -I | tr -d '[:space:]'`/g" $TEMPLATE
 sed -i "s#YourDockerDevice#$DOCKERDEVICE#g" $TEMPLATE
