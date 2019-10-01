@@ -10,7 +10,7 @@ cm_client.configuration.password = 'admin'
 api_client = cm_client.ApiClient("http://localhost:7180/api/v40")
 
 clusters_api_instance = cm_client.ClustersResourceApi(api_client)
-template = clusters_api_instance.export("OneNodeCluster")
+template = clusters_api_instance.export("SingleNodeCluster")
 
 json_dict = api_client.sanitize_for_serialization(template)
 with open('temp_template.json', 'w') as f:
