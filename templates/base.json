@@ -175,6 +175,11 @@
                      "value":"127.0.0.1"
                   },
                   {
+                     "name": "ranger_database_user", 
+                     "value": "ranger"
+                  }, 
+
+                  {
                      "name":"ranger_database_password",
                      "variable":"ranger-RANGER_ADMIN-BASE-ranger_database_password"
                   }
