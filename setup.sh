@@ -10,7 +10,12 @@ sysctl vm.swappiness=1
 timedatectl set-timezone UTC
 
 echo "-- Install Java OpenJDK8 and other tools"
-yum install -y java-1.8.0-openjdk-devel vim wget curl git bind-utils
+yum install -y java-1.8.0-openjdk-devel vim wget curl git bind-utils rng-tools
+
+cp /usr/lib/systemd/system/rngd.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl start rngd
+systemctl enable rngd
 
 # Check input parameters
 case "$1" in
