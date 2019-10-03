@@ -388,11 +388,23 @@
          "roleConfigGroups":[
             {
                "base":true,
+                "configs": [
+                   {
+                       "name": "yarn_scheduler_maximum_allocation_mb",
+                       "value": "6144"
+                   }
+               ],
                "refName":"yarn-RESOURCEMANAGER-BASE",
                "roleType":"RESOURCEMANAGER"
             },
             {
                "base":true,
+               "configs": [
+                  {
+                      "name": "yarn_nodemanager_resource_memory_mb",
+                      "value": "6144"
+                  }
+               ],
                "refName":"yarn-NODEMANAGER-BASE",
                "roleType":"NODEMANAGER"
             },
