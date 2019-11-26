@@ -213,12 +213,6 @@
          "roleConfigGroups":[
             {
                "base":true,
-               "configs":[
-                  {
-                     "name":"atlas_kafka_bootstrap_servers",
-                     "value":"YourHostname"
-                  }
-               ],
                "refName":"atlas-ATLAS_SERVER-BASE",
                "roleType":"ATLAS_SERVER"
             }
