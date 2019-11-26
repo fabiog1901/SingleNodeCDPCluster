@@ -60,7 +60,7 @@ cat - >/etc/yum.repos.d/cloudera-manager.repo <<EOF
 name=cm
 enabled=1
 type=rpm-md
-baseurl=https://$USERNAME:$PASSWORD@archive.cloudera.com/p/cm7/7.x.0/redhat7/yum/
+baseurl=https://$USERNAME:$PASSWORD@archive.cloudera.com/p/cm7/7.0.3/redhat7/yum/
 gpgcheck=0
 EOF
 
