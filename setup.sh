@@ -26,7 +26,7 @@ case "$1" in
         azure)
 # default root disk in most Azure Centos images is often small so second disk sdb1 may be needed for /opt, remove if not needed
 # if you are already using /opt before the CDH install you may need to adjust this step as appropriate
-            umount /opt
+            umount /mnt/resource
             mount /dev/sdb1 /opt
             echo "server time.windows.com prefer iburst minpoll 4 maxpoll 4" >> /etc/chrony.conf
             systemctl restart chronyd
