@@ -62,7 +62,7 @@ sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 echo "-- Install CM and MariaDB"
 
 ## CM 7
-https://archive.cloudera.com/cm7/7.0/redhat7/yum/cloudera-manager-trial.repo -P /etc/yum.repos.d/
+wget https://archive.cloudera.com/cm7/7.0/redhat7/yum/cloudera-manager-trial.repo -P /etc/yum.repos.d/
 
 ## MariaDB 10.1
 cat - >/etc/yum.repos.d/MariaDB.repo <<EOF
