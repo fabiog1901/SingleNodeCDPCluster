@@ -1,6 +1,6 @@
-# Single Node CDP Cluster 
+# Single Node CDP Data Center Cluster 
 
-This script automatically sets up a CDP cluster on the public cloud on a single VM with the services preconfigured in a template file.
+This script automatically sets up a CDP Data Center Trial cluster on the public cloud on a single VM with the services preconfigured in a template file.
 
 As this cluster is meant to be used for demos, experimenting, training, and workshops, it doesn't setup Kerberos and TLS.
 
@@ -28,7 +28,7 @@ The script `setup.sh` takes 5 arguments:
 Example: create cluster on AWS using `base.json`
 
 ```bash
-./setup.sh aws templates/base.json my_user my_pass
+./setup.sh aws templates/base.json
 ```
 
 Wait until the script finishes, check for any error.
