@@ -11,6 +11,8 @@ timedatectl set-timezone UTC
 
 echo "-- Install Java OpenJDK8 and other tools"
 yum install -y java-1.8.0-openjdk-devel vim wget curl git bind-utils rng-tools
+yum install -y epel-release
+yum install -y python-pip
 
 cp /usr/lib/systemd/system/rngd.service /etc/systemd/system/
 systemctl daemon-reload
@@ -24,8 +26,13 @@ case "$1" in
             systemctl restart chronyd
             ;;
         azure)
-            umount /mnt/resource
-            mount /dev/sdb1 /opt
+# default root disk in most Azure Centos images is often small so second disk may be needed for /opt
+# if you are already using /opt before the CDH install you may need to adjust this step as appropriate
+# the temp disk used in the Cloudera Centos image on Azure on /mnt/resource may be an option if not persisting image
+#            umount /mnt/resource
+#            mount /dev/sdb1 /opt
+            echo "server time.windows.com prefer iburst minpoll 4 maxpoll 4" >> /etc/chrony.conf
+            systemctl restart chronyd
             ;;
         gcp)
             ;;
@@ -60,7 +67,7 @@ cat - >/etc/yum.repos.d/cloudera-manager.repo <<EOF
 name=cm
 enabled=1
 type=rpm-md
-baseurl=https://$USERNAME:$PASSWORD@archive.cloudera.com/p/cm7/7.x.0/redhat7/yum/
+baseurl=https://$USERNAME:$PASSWORD@archive.cloudera.com/p/cm7/7.0.3/redhat7/yum/
 gpgcheck=0
 EOF
 
@@ -164,8 +171,6 @@ done
 
 echo "-- Now CM is started and the next step is to automate using the CM API"
 
-yum install -y epel-release
-yum install -y python-pip
 pip install --upgrade pip cm_client
 
 sed -i "s/YourHostname/`hostname -f`/g" $TEMPLATE

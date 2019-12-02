@@ -14,7 +14,7 @@ As this cluster is meant to be used for demos, experimenting, training, and work
 ```bash
 sudo su -
 yum install -y git
-git clone https://github.com/fabiog1901/SingleNodeCDPCluster.git
+git clone https://github.com/DavidFowler/SingleNodeCDPCluster.git
 cd SingleNodeCDPCluster
 ```
 
