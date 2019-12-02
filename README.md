@@ -18,11 +18,9 @@ git clone https://github.com/fabiog1901/SingleNodeCDPCluster.git
 cd SingleNodeCDPCluster
 ```
 
-The script `setup.sh` takes 5 arguments:
+The script `setup.sh` takes 3 arguments:
 - the cloud provider name: `aws`,`azure`,`gcp`;
 - the template file;
-- the username;
-- the password;
 - OPTIONAL the Docker Device disk mount point.
 
 Example: create cluster on AWS using `base.json`
