@@ -44,9 +44,7 @@ case "$1" in
 esac
 
 TEMPLATE=$2
-USERNAME=$3
-PASSWORD=$4
-DOCKERDEVICE=$5
+DOCKERDEVICE=$3
 
 echo "-- Configure networking"
 PUBLIC_IP=`curl https://api.ipify.org/`
@@ -167,13 +165,10 @@ echo "-- Now CM is started and the next step is to automate using the CM API"
 pip install --upgrade pip cm_client
 
 sed -i "s/YourHostname/`hostname -f`/g" $TEMPLATE
-#sed -i "s/USERNAME/$USERNAME/g" $TEMPLATE
-#sed -i "s/PASSWORD/$PASSWORD/g" $TEMPLATE
 sed -i "s/YourCDSWDomain/cdsw.$PUBLIC_IP.nip.io/g" $TEMPLATE
 sed -i "s/YourPrivateIP/`hostname -I | tr -d '[:space:]'`/g" $TEMPLATE
 sed -i "s#YourDockerDevice#$DOCKERDEVICE#g" $TEMPLATE
 
 sed -i "s/YourHostname/`hostname -f`/g" scripts/create_cluster.py
 
-python scripts/create_cluster.py $TEMPLATE # $USERNAME $PASSWORD
-
+python scripts/create_cluster.py $TEMPLATE
