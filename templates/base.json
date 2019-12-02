@@ -47,6 +47,10 @@
       ],
       "variables":[
          {
+            "name": "atlas-ATLAS_SERVER-BASE-atlas_admin_password", 
+            "value": "BadPass#1"
+         }, 
+         {
             "name":"hive-hive_metastore_database_host",
             "value":"YourHostname"
          },
@@ -213,6 +217,16 @@
          "roleConfigGroups":[
             {
                "base":true,
+               "configs": [
+                        {
+                            "name": "atlas_authentication_method_file", 
+                            "value": "true"
+                        }, 
+                        {
+                            "name": "atlas_admin_password", 
+                            "variable": "atlas-ATLAS_SERVER-BASE-atlas_admin_password"
+                        }
+                    ], 
                "refName":"atlas-ATLAS_SERVER-BASE",
                "roleType":"ATLAS_SERVER"
             }
