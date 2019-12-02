@@ -37,9 +37,9 @@ case "$1" in
         gcp)
             ;;
         *)
-            echo $"Usage: $0 {aws|azure|gcp} template-file username password [docker-device]"
-            echo $"example: ./setup.sh azure templates/essential.json fabio my_pass"
-            echo $"example: ./setup.sh aws template/cml.json fabio my_pass /dev/xvdb"
+            echo $"Usage: $0 {aws|azure|gcp} template-file [docker-device]"
+            echo $"example: ./setup.sh azure templates/essential.json"
+            echo $"example: ./setup.sh aws template/cml.json /dev/xvdb"
             exit 1
 esac
 
