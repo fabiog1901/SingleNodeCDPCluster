@@ -19,6 +19,12 @@ systemctl daemon-reload
 systemctl start rngd
 systemctl enable rngd
 
+echo "-- Installing requirements for Stream Messaging Manager"
+yum install -y gcc-c++ make 
+curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash - 
+yum install nodejs -y
+npm install forever -g 
+
 # Check input parameters
 case "$1" in
         aws)
@@ -130,7 +136,10 @@ EOF
 
 
 echo "-- Install CSDs"
-# test install of CDSW
+wget https://archive.cloudera.com/CFM/csd/1.0.0.0/NIFI-1.9.0.1.0.0.0-90.jar -P /opt/cloudera/csd/
+wget https://archive.cloudera.com/CFM/csd/1.0.0.0/NIFICA-1.9.0.1.0.0.0-90.jar -P /opt/cloudera/csd/
+wget https://archive.cloudera.com/CFM/csd/1.0.0.0/NIFIREGISTRY-0.3.0.1.0.0.0-90.jar -P /opt/cloudera/csd/
+# CDSW CSD: must update descriptors so it can install on CR7
 wget https://archive.cloudera.com/cdsw1/1.6.1/csd/CLOUDERA_DATA_SCIENCE_WORKBENCH-CDH6-1.6.1.jar -P cdswjar
 cd cdswjar/
 jar xvf CLOUDERA_DATA_SCIENCE_WORKBENCH-CDH6-1.6.1.jar 
