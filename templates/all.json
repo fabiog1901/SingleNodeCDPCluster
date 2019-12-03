@@ -33,6 +33,7 @@
             "nifiregistry-NIFI_REGISTRY_SERVER-BASE", 
             "nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE",
             "oozie-OOZIE_SERVER-BASE",
+            "phoenix-PHOENIX_QUERY_SERVER-BASE", 
             "ranger-RANGER_ADMIN-BASE",
             "ranger-RANGER_TAGSYNC-BASE",
             "ranger-RANGER_USERSYNC-BASE",
@@ -350,7 +351,22 @@
                "roleType":"KAFKA_BROKER"
             }
          ],
-         "serviceType":"KAFKA"
+         "serviceConfigs": [
+                {
+                    "name": "transaction.state.log.min.isr", 
+                    "value": "1"
+                }, 
+                {
+                    "name": "transaction.state.log.replication.factor", 
+                    "value": "1"
+                }, 
+                {
+                    "name": "offsets.topic.replication.factor", 
+                    "value": "1"
+                }
+            ], 
+            "serviceType": "KAFKA"
+
       },
       {
          "refName":"hue",
@@ -378,7 +394,12 @@
             {
                "name":"database_host",
                "variable":"hue-database_host"
-            }
+            },
+             {
+                    "name": "impala_service", 
+                    "ref": "impala"
+                }
+
          ],
          "serviceType":"HUE"
       },
@@ -719,7 +740,33 @@
                 }
             ], 
             "serviceType": "IMPALA"
+        },
+      {
+            "refName": "phoenix", 
+            "roleConfigGroups": [
+                {
+                    "base": true, 
+                    "refName": "phoenix-PHOENIX_QUERY_SERVER-BASE", 
+                    "roleType": "PHOENIX_QUERY_SERVER"
+                }
+            ], 
+            "serviceConfigs": [
+                {
+                    "name": "hdfs_service", 
+                    "ref": "hdfs"
+                }, 
+                {
+                    "name": "zookeeper_service", 
+                    "ref": "zookeeper"
+                }, 
+                {
+                    "name": "hbase_service", 
+                    "ref": "hbase"
+                }
+            ], 
+            "serviceType": "PHOENIX"
         }
+
 
    ]
 }
