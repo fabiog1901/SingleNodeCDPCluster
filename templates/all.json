@@ -22,7 +22,12 @@
             "hive_on_tez-HIVESERVER2-BASE",
             "hue-HUE_LOAD_BALANCER-BASE",
             "hue-HUE_SERVER-BASE",
-            "kafka-KAFKA_BROKER-BASE",
+            "impala-CATALOGSERVER-BASE", 
+            "impala-IMPALAD-BASE", 
+            "impala-STATESTORE-BASE", 
+            "kafka-KAFKA_BROKER-BASE", 
+            "kudu-KUDU_MASTER-BASE", 
+            "kudu-KUDU_TSERVER-BASE", 
             "livy-LIVY_SERVER-BASE",
             "nifi-NIFI_NODE-BASE", 
             "nifiregistry-NIFI_REGISTRY_SERVER-BASE", 
@@ -52,6 +57,22 @@
          }
       ],
       "variables":[
+         {
+                "name": "kudu-KUDU_MASTER-BASE-fs_data_dirs", 
+                "value": "/kudu/mdir"
+            }, 
+            {
+                "name": "kudu-KUDU_MASTER-BASE-fs_wal_dir", 
+                "value": "/kudu/mwal"
+            }, 
+            {
+                "name": "kudu-KUDU_TSERVER-BASE-fs_data_dirs", 
+                "value": "/kudu/tdir"
+            }, 
+            {
+                "name": "kudu-KUDU_TSERVER-BASE-fs_wal_dir", 
+                "value": "/kudu/twal"
+            }, 
          {
             "name": "nifitoolkitca-nifi.toolkit.tls.ca.server.token", 
             "value": "ClouderaNiFi_123"
@@ -615,6 +636,90 @@
                 }
             ], 
             "serviceType": "NIFI"
+        },
+      {
+            "refName": "kudu", 
+            "roleConfigGroups": [
+                {
+                    "base": true, 
+                    "configs": [
+                        {
+                            "name": "fs_wal_dir", 
+                            "variable": "kudu-KUDU_MASTER-BASE-fs_wal_dir"
+                        }, 
+                        {
+                            "name": "fs_data_dirs", 
+                            "variable": "kudu-KUDU_MASTER-BASE-fs_data_dirs"
+                        }
+                    ], 
+                    "refName": "kudu-KUDU_MASTER-BASE", 
+                    "roleType": "KUDU_MASTER"
+                }, 
+                {
+                    "base": true, 
+                    "configs": [
+                        {
+                            "name": "fs_wal_dir", 
+                            "variable": "kudu-KUDU_TSERVER-BASE-fs_wal_dir"
+                        }, 
+                        {
+                            "name": "fs_data_dirs", 
+                            "variable": "kudu-KUDU_TSERVER-BASE-fs_data_dirs"
+                        }
+                    ], 
+                    "refName": "kudu-KUDU_TSERVER-BASE", 
+                    "roleType": "KUDU_TSERVER"
+                }
+            ], 
+            "serviceType": "KUDU"
+        }, 
+        {
+            "refName": "impala", 
+            "roleConfigGroups": [
+                {
+                    "base": true, 
+                    "refName": "impala-IMPALAD-BASE", 
+                    "roleType": "IMPALAD"
+                }, 
+                {
+                    "base": true, 
+                    "refName": "impala-STATESTORE-BASE", 
+                    "roleType": "STATESTORE"
+                }, 
+                {
+                    "base": true, 
+                    "refName": "impala-CATALOGSERVER-BASE", 
+                    "roleType": "CATALOGSERVER"
+                }
+            ], 
+            "serviceConfigs": [
+                {
+                    "name": "ranger_service", 
+                    "ref": "ranger"
+                }, 
+                {
+                    "name": "kudu_service", 
+                    "ref": "kudu"
+                }, 
+                {
+                    "name": "hdfs_service", 
+                    "ref": "hdfs"
+                }, 
+                {
+                    "name": "hive_service", 
+                    "ref": "hive"
+                }, 
+                {
+                    "name": "atlas_service", 
+                    "ref": "atlas"
+                }, 
+                {
+                    "name": "hbase_service", 
+                    "ref": "hbase"
+                }
+            ], 
+            "serviceType": "IMPALA"
         }
+
    ]
 }
