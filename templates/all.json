@@ -37,9 +37,13 @@
             "ranger-RANGER_ADMIN-BASE",
             "ranger-RANGER_TAGSYNC-BASE",
             "ranger-RANGER_USERSYNC-BASE",
-            "solr-SOLR_SERVER-BASE",
-            "spark_on_yarn-GATEWAY-BASE",
-            "spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE",
+            "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE", 
+                "solr-SOLR_SERVER-BASE", 
+                "spark_on_yarn-GATEWAY-BASE", 
+                "spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE", 
+                "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE", 
+                "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_UI-BASE", 
+
             "tez-GATEWAY-BASE",
             "yarn-JOBHISTORY-BASE",
             "yarn-NODEMANAGER-BASE",
@@ -137,10 +141,28 @@
          {
             "name":"ranger-rangerusersync_user_password",
             "value":"BadPass#1"
-         }
+         },
+          {
+                "name": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE-streams.messaging.manager.storage.connector.password", 
+                "value": "<changeme>"
+            }, 
+            {
+                "name": "streams_messaging_manager-cm.metrics.password", 
+                "value": "<changeme>"
+            }
+
       ]
    },
    "products": [
+       {
+            "product": "SCHEMAREGISTRY", 
+            "version": "0.8.0.2.0.0.0-135"
+        }, 
+        {
+            "product": "STREAMS_MESSAGING_MANAGER", 
+            "version": "2.1.0.2.0.0.0-135"
+        }, 
+
         {
             "product": "CFM", 
             "version": "1.0.0.0"
@@ -765,7 +787,69 @@
                 }
             ], 
             "serviceType": "PHOENIX"
+        },
+       {
+            "refName": "schemaregistry", 
+            "roleConfigGroups": [
+                {
+                    "base": true, 
+                    "refName": "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE", 
+                    "roleType": "SCHEMA_REGISTRY_SERVER"
+                }
+            ], 
+            "serviceConfigs": [
+                {
+                    "name": "zookeeper_service", 
+                    "ref": "zookeeper"
+                }
+            ], 
+            "serviceType": "SCHEMAREGISTRY"
+        }, 
+        {
+            "refName": "streams_messaging_manager", 
+            "roleConfigGroups": [
+                {
+                    "base": true, 
+                    "configs": [
+                        {
+                            "name": "streams.messaging.manager.storage.connector.password", 
+                            "variable": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE-streams.messaging.manager.storage.connector.password"
+                        }, 
+                        {
+                            "name": "streams.messaging.manager.storage.connector.connectURI", 
+                            "value": "http://YourHostname:7788/api/v1"
+                        }
+                    ], 
+                    "refName": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE", 
+                    "roleType": "STREAMS_MESSAGING_MANAGER_SERVER"
+                }, 
+                {
+                    "base": true, 
+                    "refName": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_UI-BASE", 
+                    "roleType": "STREAMS_MESSAGING_MANAGER_UI"
+                }
+            ], 
+            "serviceConfigs": [
+                {
+                    "name": "zookeeper_service", 
+                    "ref": "zookeeper"
+                }, 
+                {
+                    "name": "cm.metrics.password", 
+                    "variable": "streams_messaging_manager-cm.metrics.password"
+                }, 
+                {
+                    "name": "kafka_service", 
+                    "ref": "kafka"
+                }, 
+                {
+                    "name": "cm.metrics.host", 
+                    "value": "10.0.0.232"
+                }
+            ], 
+            "serviceType": "STREAMS_MESSAGING_MANAGER"
         }
+
 
 
    ]
