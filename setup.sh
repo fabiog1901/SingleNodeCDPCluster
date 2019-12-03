@@ -139,7 +139,7 @@ sed -i 's/"max" : "6"/"max" : "7"/' descriptor/service.sdl
 sed -i 's/<cdh.max.version>6/<cdh.max.version>7/' META-INF/maven/com.cloudera.csd/CLOUDERA_DATA_SCIENCE_WORKBENCH-CDH6/pom.xml
 jar cvf CLOUDERA_DATA_SCIENCE_WORKBENCH-CDH6-1.6.1.jar *
 mv CLOUDERA_DATA_SCIENCE_WORKBENCH-CDH6-1.6.1.jar ~
-cd ~
+cd ..
 
 # install local CSDs
 mv ~/*.jar /opt/cloudera/csd/
