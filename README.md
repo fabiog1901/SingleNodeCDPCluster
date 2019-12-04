@@ -54,12 +54,12 @@ The script `setup.sh` takes 3 arguments:
 
 Example: create cluster without CDSW on AWS using default_template.json
 ```
-$ ./setup.sh aws templates/default_template.json
+$ ./setup.sh aws templates/base.json
 ```
 
 Example: create cluster with CDSW on Azure using cdsw_template.json
 ```
-$ ./setup.sh azure templates/cdsw_template.json /dev/sdc
+$ ./setup.sh azure templates/all.json /dev/sdc
 ```
 
 Wait until the script finishes, check for any error.
@@ -73,11 +73,6 @@ Wait for about 20-30 mins for CDSW to be ready. You can monitor the status of CD
 You can use `kubectl get pods -n kube-system` to check if all the pods that the role `Master` is suppose to start have really started.
 
 You can also check the CDSW deployment status on CM > CDSW service > Instances > Master role > Processes > stdout.
-
-## Troubleshooting and known issues
-
-**Clock Offset**: the NTPD service which is required by Kudu and the Host is not installed. For the moment, just put
-`--use-hybrid-clock=false`  in Kudu's Configuration property `Kudu Service Advanced Configuration Snippet (Safety Valve) for gflagfile` and suppressed all other warnings.
 
 ### Docker device
 
