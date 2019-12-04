@@ -59,7 +59,7 @@ $ ./setup.sh aws templates/base.json
 
 Example: create cluster with CDSW on Azure using cdsw_template.json
 ```
-$ ./setup.sh azure templates/all.json /dev/sdc
+$ ./setup.sh azure templates/iot_workshop.json /dev/sdc
 ```
 
 Wait until the script finishes, check for any error.
