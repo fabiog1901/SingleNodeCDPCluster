@@ -87,7 +87,7 @@ nvme0n1     259:1    0  100G  0 disk
 +-nvme0n1p1 259:2    0  100G  0 part /
 nvme1n1     259:0    0 1000G  0 disk
 
-$ ./setup.sh aws templates/cdsw_template.json /dev/nvme1n1
+$ ./setup.sh aws templates/iot_workshop.json /dev/nvme1n1
 ```
 
 Azure Standard D8s v3 or Standard D16s v3
@@ -103,7 +103,7 @@ sdb      8:16   0   56G  0 disk
 sdc      8:32   0 1000G  0 disk
 sr0     11:0    1  628K  0 rom
 
-$ ./setup.sh azure templates/cdsw_template.json /dev/sdc
+$ ./setup.sh azure templates/iot_workshop.json /dev/sdc
 ```
 
 GCP n1-standard-8 or n1-standard-16
@@ -114,5 +114,5 @@ sda      8:0    0  100G  0 disk
 └─sda1   8:1    0  100G  0 part /
 sdb      8:16   0 1000G  0 disk
 
-$ ./setup.sh gcp templates/cdsw_template.json /dev/sdb
+$ ./setup.sh gcp templates/iot_workshop.json /dev/sdb
 ```
