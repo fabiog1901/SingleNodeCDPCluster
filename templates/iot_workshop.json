@@ -11,8 +11,6 @@
         "cdsw-CDSW_APPLICATION-BASE",
         "cdsw-CDSW_DOCKER-BASE",
         "cdsw-CDSW_MASTER-BASE",
-        "hbase-MASTER-BASE",
-        "hbase-REGIONSERVER-BASE",
         "hdfs-BALANCER-BASE",
         "hdfs-DATANODE-BASE",
         "hdfs-NAMENODE-BASE",
@@ -32,11 +30,9 @@
         "nifiregistry-NIFI_REGISTRY_SERVER-BASE",
         "nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE",
         "oozie-OOZIE_SERVER-BASE",
-        "phoenix-PHOENIX_QUERY_SERVER-BASE",
         "ranger-RANGER_ADMIN-BASE",
         "ranger-RANGER_TAGSYNC-BASE",
         "ranger-RANGER_USERSYNC-BASE",
-        "solr-SOLR_SERVER-BASE",
         "spark_on_yarn-GATEWAY-BASE",
         "spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE",
         "tez-GATEWAY-BASE",
@@ -300,17 +296,6 @@
       "serviceType": "HIVE_ON_TEZ"
     },
     {
-      "refName": "solr",
-      "roleConfigGroups": [
-        {
-          "base": true,
-          "refName": "solr-SOLR_SERVER-BASE",
-          "roleType": "SOLR_SERVER"
-        }
-      ],
-      "serviceType": "SOLR"
-    },
-    {
       "refName": "kafka",
       "roleConfigGroups": [
         {
@@ -459,48 +444,6 @@
         }
       ],
       "serviceType": "YARN"
-    },
-    {
-      "refName": "hbase",
-      "roleConfigGroups": [
-        {
-          "base": true,
-          "configs": [
-            {
-              "name": "hbase_regionserver_java_heapsize",
-              "value": "524288000"
-            }
-          ],
-          "refName": "hbase-REGIONSERVER-BASE",
-          "roleType": "REGIONSERVER"
-        },
-        {
-          "base": true,
-          "configs": [
-            {
-              "name": "hbase_master_java_heapsize",
-              "value": "524288000"
-            }
-          ],
-          "refName": "hbase-MASTER-BASE",
-          "roleType": "MASTER"
-        }
-      ],
-      "serviceConfigs": [
-        {
-          "name": "hbase_service_config_safety_valve",
-          "value": "<property>\n<name>hbase.regionserver.wal.codec</name>\n \n<value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>\n</property> \n\n<property>\n<name>hbase.region.server.rpc.scheduler.factory.class</name>\n<value>org.apache.hadoop.hbase.ipc.PhoenixRpcSchedulerFactory</value>\n  <description>Factory to create the Phoenix RPC Scheduler that uses separate queues for index and metadata updates</description>\n</property>\n\n<property>\n  <name>hbase.rpc.controllerfactory.class</name>\n<value>org.apache.hadoop.hbase.ipc.controller.ServerRpcControllerFactory</value>\n  <description>Factory to create the Phoenix RPC Scheduler that uses separate queues for index and metadata updates</description>\n</property>\n\n<property>\n <name>phoenix.functions.allowUserDefinedFunctions</name>\n <value>true</value>\n <description>enable UDF functions</description>\n</property>"
-        },
-        {
-          "name": "zookeeper_service",
-          "ref": "zookeeper"
-        },
-        {
-          "name": "hdfs_service",
-          "ref": "hdfs"
-        }
-      ],
-      "serviceType": "HBASE"
     },
     {
       "refName": "hive",
@@ -734,31 +677,6 @@
         }
       ],
       "serviceType": "IMPALA"
-    },
-    {
-      "refName": "phoenix",
-      "roleConfigGroups": [
-        {
-          "base": true,
-          "refName": "phoenix-PHOENIX_QUERY_SERVER-BASE",
-          "roleType": "PHOENIX_QUERY_SERVER"
-        }
-      ],
-      "serviceConfigs": [
-        {
-          "name": "hdfs_service",
-          "ref": "hdfs"
-        },
-        {
-          "name": "zookeeper_service",
-          "ref": "zookeeper"
-        },
-        {
-          "name": "hbase_service",
-          "ref": "hbase"
-        }
-      ],
-      "serviceType": "PHOENIX"
     }
   ]
 }
