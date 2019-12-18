@@ -195,12 +195,6 @@
                     "roleType": "ATLAS_SERVER"
                 }
             ], 
-            "serviceConfigs": [
-                {
-                    "name": "kerberos.auth.enable", 
-                    "value": "true"
-                }
-            ], 
             "serviceType": "ATLAS"
         }, 
         {
@@ -315,13 +309,7 @@
                     "refName": "zeppelin-ZEPPELIN_SERVER-BASE", 
                     "roleType": "ZEPPELIN_SERVER"
                 }
-            ], 
-            "serviceConfigs": [
-                {
-                    "name": "zeppelin.authentication.method.kerberos", 
-                    "value": "true"
-                }
-            ], 
+            ],  
             "serviceType": "ZEPPELIN"
         }, 
         {
@@ -360,12 +348,6 @@
                     "roleType": "SOLR_SERVER"
                 }
             ], 
-            "serviceConfigs": [
-                {
-                    "name": "solr_security_authentication", 
-                    "value": "kerberos"
-                }
-            ], 
             "serviceType": "SOLR"
         }, 
         {
@@ -391,10 +373,6 @@
                 {
                     "name": "transaction.state.log.replication.factor", 
                     "value": "1"
-                }, 
-                {
-                    "name": "kerberos.auth.enable", 
-                    "value": "true"
                 }, 
                 {
                     "name": "offsets.topic.replication.factor", 
@@ -480,10 +458,6 @@
                 {
                     "name": "dfs_replication", 
                     "value": "1"
-                }, 
-                {
-                    "name": "hadoop_security_authentication", 
-                    "value": "kerberos"
                 }, 
                 {
                     "name": "hadoop_authorized_admin_groups", 
@@ -585,10 +559,6 @@
                 {
                     "name": "hbase_atlas_hook_enable", 
                     "value": "true"
-                }, 
-                {
-                    "name": "hbase_security_authentication", 
-                    "value": "kerberos"
                 }
             ], 
             "serviceType": "HBASE"
