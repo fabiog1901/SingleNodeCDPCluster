@@ -116,17 +116,7 @@
         }
     ], 
     "repositories": [
-        "https://archive.cloudera.com/cdh7/7.0/parcels/", 
-        "https://archive.cloudera.com/p/cdh7/{latest_supported}/parcels/", 
-        "https://archive.cloudera.com/cdh7/{latest_supported}/parcels/", 
-        "https://parcels.repos.intel.com/mkl/latest", 
-        "https://archive.cloudera.com/accumulo-c5/parcels/latest/", 
-        "https://archive.cloudera.com/accumulo6/6.1/parcels/", 
-        "https://archive.cloudera.com/kafka/parcels/latest/", 
-        "http://archive.cloudera.com/kudu/parcels/latest/", 
-        "https://archive.cloudera.com/sqoop-teradata-connector1/latest/parcels/", 
-        "https://archive.cloudera.com/sqoop-netezza-connector1/latest/", 
-        "https://archive.cloudera.com/sqoop-connectors/parcels/latest/"
+        "https://archive.cloudera.com/cdh7/7.0/parcels/"
     ], 
     "services": [
         {
