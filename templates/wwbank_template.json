@@ -19,7 +19,6 @@
                 "hive_on_tez-HIVESERVER2-BASE", 
                 "hue-HUE_LOAD_BALANCER-BASE", 
                 "hue-HUE_SERVER-BASE", 
-                "hue-KT_RENEWER-BASE", 
                 "kafka-KAFKA_BROKER-BASE", 
                 "livy-LIVY_SERVER-BASE", 
                 "oozie-OOZIE_SERVER-BASE", 
@@ -152,16 +151,6 @@
                     "base": true, 
                     "refName": "zookeeper-SERVER-BASE", 
                     "roleType": "SERVER"
-                }
-            ], 
-            "serviceConfigs": [
-                {
-                    "name": "enableSecurity", 
-                    "value": "true"
-                }, 
-                {
-                    "name": "quorum_auth_enable_sasl", 
-                    "value": "true"
                 }
             ], 
             "serviceType": "ZOOKEEPER"
@@ -299,7 +288,7 @@
                     "refName": "zeppelin-ZEPPELIN_SERVER-BASE", 
                     "roleType": "ZEPPELIN_SERVER"
                 }
-            ],  
+            ], 
             "serviceType": "ZEPPELIN"
         }, 
         {
@@ -381,11 +370,6 @@
                 }, 
                 {
                     "base": true, 
-                    "refName": "hue-KT_RENEWER-BASE", 
-                    "roleType": "KT_RENEWER"
-                }, 
-                {
-                    "base": true, 
                     "refName": "hue-HUE_LOAD_BALANCER-BASE", 
                     "roleType": "HUE_LOAD_BALANCER"
                 }
@@ -421,20 +405,6 @@
                 }, 
                 {
                     "base": true, 
-                    "configs": [
-                        {
-                            "name": "dfs_datanode_data_dir_perm", 
-                            "value": "700"
-                        }, 
-                        {
-                            "name": "dfs_datanode_port", 
-                            "value": "1004"
-                        }, 
-                        {
-                            "name": "dfs_datanode_http_port", 
-                            "value": "1006"
-                        }
-                    ], 
                     "refName": "hdfs-DATANODE-BASE", 
                     "roleType": "DATANODE"
                 }, 
@@ -450,24 +420,8 @@
                     "value": "1"
                 }, 
                 {
-                    "name": "hadoop_authorized_admin_groups", 
-                    "value": "etl"
-                }, 
-                {
                     "name": "hdfs_under_replicated_blocks_thresholds", 
                     "value": "{\"warning\":\"never\",\"critical\":\"never\"}"
-                }, 
-                {
-                    "name": "hadoop_secure_web_ui", 
-                    "value": "true"
-                }, 
-                {
-                    "name": "dfs_encrypt_data_transfer_algorithm", 
-                    "value": "AES/CTR/NoPadding"
-                }, 
-                {
-                    "name": "hadoop_security_authorization", 
-                    "value": "true"
                 }, 
                 {
                     "name": "hdfs_verify_ec_with_topology_enabled", 
@@ -515,12 +469,6 @@
                     "roleType": "JOBHISTORY"
                 }
             ], 
-            "serviceConfigs": [
-                {
-                    "name": "hadoop_secure_web_ui", 
-                    "value": "true"
-                }
-            ], 
             "serviceType": "YARN"
         }, 
         {
@@ -538,14 +486,6 @@
                 }
             ], 
             "serviceConfigs": [
-                {
-                    "name": "hbase_security_authorization", 
-                    "value": "true"
-                }, 
-                {
-                    "name": "hbase_thriftserver_security_authentication", 
-                    "value": "auth-conf"
-                }, 
                 {
                     "name": "hbase_atlas_hook_enable", 
                     "value": "true"
