@@ -285,6 +285,12 @@
             "roleConfigGroups": [
                 {
                     "base": true, 
+                    "configs": [
+                        {
+                            "name": "zeppelin.shiro.urls.block", 
+                            "value": "/api/version = anon\n/api/interpreter/setting/restart/** = authc\n/** = authc"
+                        }
+                    ], 
                     "refName": "zeppelin-ZEPPELIN_SERVER-BASE", 
                     "roleType": "ZEPPELIN_SERVER"
                 }
@@ -418,6 +424,10 @@
                 {
                     "name": "dfs_replication", 
                     "value": "1"
+                }, 
+                {
+                    "name": "core_site_safety_valve", 
+                    "value": "<property><name>hadoop.proxyuser.zeppelin.groups</name><value>*</value></property><property><name>hadoop.proxyuser.zeppelin.hosts</name><value>*</value></property>"
                 }, 
                 {
                     "name": "hdfs_under_replicated_blocks_thresholds", 
