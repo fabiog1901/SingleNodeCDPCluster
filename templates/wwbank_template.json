@@ -226,6 +226,16 @@
                 }, 
                 {
                     "base": true, 
+                    "configs": [
+                        {
+                            "name": "conf/ranger-tagsync-site.xml_role_safety_valve", 
+                            "value": "<property><name>ranger.tagsync.atlas.hdfs.instance.cm.ranger.service</name><value>cm_hdfs</value></property>"
+                        }, 
+                        {
+                            "name": "log4j_safety_valve", 
+                            "value": "root.logger=DEBUG,RFA"
+                        }
+                    ],                     
                     "refName": "ranger-RANGER_TAGSYNC-BASE", 
                     "roleType": "RANGER_TAGSYNC"
                 }, 
