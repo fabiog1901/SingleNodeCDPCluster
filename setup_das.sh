@@ -121,8 +121,8 @@ echo 'LC_ALL="en_US.UTF-8"' >> /etc/locale.conf
 
 /usr/pgsql-9.6/bin/postgresql96-setup initdb
 
-cat conf/pg_hba.conf > /var/lib/pgsql/data/pg_hba.conf
-cat conf/postgresql.conf > /var/lib/pgsql/data/postgresql.conf
+cat conf/pg_hba.conf > /var/lib/pgsql/9.6/data/pg_hba.conf
+cat conf/postgresql.conf > /var/lib/pgsql/9.6/data/postgresql.conf
 
 
 echo "--Enable and start pgsql"
