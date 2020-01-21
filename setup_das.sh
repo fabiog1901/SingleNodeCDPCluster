@@ -112,9 +112,9 @@ echo "-- Prepare CM database 'scm'"
 
 
 ## PostgreSQL see: https://www.postgresql.org/download/linux/redhat/
-yum install https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
-yum install postgresql96
-yum install postgresql96-server
+yum install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-7-x86_64/pgdg-redhat-repo-latest.noarch.rpm
+yum install -y postgresql96
+yum install -y postgresql96-server
 
 pip install psycopg2==2.7.5 --ignore-installed
 echo 'LC_ALL="en_US.UTF-8"' >> /etc/locale.conf
