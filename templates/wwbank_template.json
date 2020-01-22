@@ -542,10 +542,6 @@
                 {
                     "name": "data_analytics_studio_database_password",
                     "variable": "das-data_analytics_studio_database_password"
-                },
-                {
-                    "name": "kerberos.auth.enabled",
-                    "value": "true"
                 }
             ],
             "roleConfigGroups": [
