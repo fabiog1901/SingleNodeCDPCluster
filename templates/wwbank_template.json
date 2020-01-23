@@ -406,6 +406,10 @@
                     "variable": "hue-database_password"
                 },
                 {
+                     "name" : "auth_backend",
+                     "value" : "desktop.auth.backend.PamBackend"
+                },
+                {
                     "name": "database_host",
                     "variable": "hue-database_host"
                 }
