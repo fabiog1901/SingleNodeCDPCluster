@@ -181,7 +181,7 @@
   ],
   "repositories": [
     "https://archive.cloudera.com/cdh7/7.0/parcels/",
-    "https://archive.cloudera.com/CFM/parcels/1.0.0.0/",
+    "https://archive.cloudera.com/CFM/parcels/1.0.1.0/",
     "https://archive.cloudera.com/cdsw1/1.6.1/parcels/",
     "https://repo.continuum.io/pkgs/misc/parcels/archive/"
   ],
