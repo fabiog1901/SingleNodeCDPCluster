@@ -165,6 +165,7 @@
     ],
     "repositories": [
       "https://archive.cloudera.com/cdh7/7.0/parcels/",
+      "https://archive.cloudera.com/CFM/parcels/1.0.1.0/",
       "http://archive.cloudera.com/csa/latest/parcels"
     ],
     "services": [
