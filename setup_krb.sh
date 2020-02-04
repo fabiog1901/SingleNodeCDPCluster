@@ -165,11 +165,13 @@ cd ..
 
 # install local CSDs
 mv ~/*.jar /opt/cloudera/csd/
+mv /home/centos/*.jar /opt/cloudera/csd/
 chown cloudera-scm:cloudera-scm /opt/cloudera/csd/*
 chmod 644 /opt/cloudera/csd/*
 
 echo "-- Install local parcels"
 mv ~/*.parcel ~/*.parcel.sha /opt/cloudera/parcel-repo/
+mv /home/centos/*.parcel /home/centos/*.parcel.sha /opt/cloudera/parcel-repo/
 chown cloudera-scm:cloudera-scm /opt/cloudera/parcel-repo/*
 
 echo "-- Install CEM Tarballs"
