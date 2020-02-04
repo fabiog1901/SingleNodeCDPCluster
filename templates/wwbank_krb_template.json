@@ -117,7 +117,7 @@
             },
             {
                 "name": "ranger-keyadmin_user_password",
-                "value": "<changeme>"
+                "value": "BadPass#1"
             },
             {
                 "name": "ranger-rangeradmin_user_password",
