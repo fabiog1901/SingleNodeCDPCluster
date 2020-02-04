@@ -1,909 +1,958 @@
 {
-  "cluster_template": {
     "cdhVersion": "7.0.3",
     "cmVersion": "7.0.3",
     "displayName": "WWBank",
     "hostTemplates": [
-      {
-        "refName": "MasterTemplate",
-        "cardinality": 1,
-        "roleConfigGroupsRefNames": [
-          "atlas-ATLAS_SERVER-BASE",
-          "das-DAS_EVENT_PROCESSOR-BASE",
-          "das-DAS_WEBAPP-BASE",
-          "flink-FLINK_HISTORY_SERVER-BASE",
-          "flink-GATEWAY-BASE",
-          "hbase-MASTER-BASE",
-          "hbase-REGIONSERVER-BASE",
-          "hdfs-BALANCER-BASE",
-          "hdfs-DATANODE-BASE",
-          "hdfs-NAMENODE-BASE",
-          "hdfs-SECONDARYNAMENODE-BASE",
-          "hive-GATEWAY-BASE",
-          "hive-HIVEMETASTORE-BASE",
-          "hive_on_tez-HIVESERVER2-BASE",
-          "hue-HUE_LOAD_BALANCER-BASE",
-          "hue-HUE_SERVER-BASE",
-          "hue-KT_RENEWER-BASE",
-          "kafka-KAFKA_BROKER-BASE",
-          "livy-LIVY_SERVER-BASE",
-          "nifi-NIFI_NODE-BASE",
-          "nifiregistry-NIFI_REGISTRY_SERVER-BASE",
-          "nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE",
-          "oozie-OOZIE_SERVER-BASE",
-          "phoenix-PHOENIX_QUERY_SERVER-BASE",
-          "ranger-RANGER_ADMIN-BASE",
-          "ranger-RANGER_TAGSYNC-BASE",
-          "ranger-RANGER_USERSYNC-BASE",
-          "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE",
-          "solr-SOLR_SERVER-BASE",
-          "spark_on_yarn-GATEWAY-BASE",
-          "spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE",
-          "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE",
-          "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_UI-BASE",
-          "tez-GATEWAY-BASE",
-          "yarn-JOBHISTORY-BASE",
-          "yarn-NODEMANAGER-BASE",
-          "yarn-RESOURCEMANAGER-BASE",
-          "zeppelin-ZEPPELIN_SERVER-BASE",
-          "zookeeper-SERVER-BASE"
-        ]
-      }
+        {
+            "refName": "MasterTemplate",
+            "cardinality": 1,
+            "roleConfigGroupsRefNames": [
+                "atlas-ATLAS_SERVER-BASE",
+                "das-DAS_EVENT_PROCESSOR-BASE",
+                "das-DAS_WEBAPP-BASE",
+                "flink-FLINK_HISTORY_SERVER-BASE",
+                "flink-GATEWAY-BASE",
+                "hbase-MASTER-BASE",
+                "hbase-REGIONSERVER-BASE",
+                "hdfs-BALANCER-BASE",
+                "hdfs-DATANODE-BASE",
+                "hdfs-NAMENODE-BASE",
+                "hdfs-SECONDARYNAMENODE-BASE",
+                "hive-GATEWAY-BASE",
+                "hive-HIVEMETASTORE-BASE",
+                "hive_on_tez-HIVESERVER2-BASE",
+                "hue-HUE_LOAD_BALANCER-BASE",
+                "hue-HUE_SERVER-BASE",
+                "hue-KT_RENEWER-BASE",
+                "kafka-KAFKA_BROKER-BASE",
+                "livy-LIVY_SERVER-BASE",
+                "nifi-NIFI_NODE-BASE",
+                "nifiregistry-NIFI_REGISTRY_SERVER-BASE",
+                "nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE",
+                "oozie-OOZIE_SERVER-BASE",
+                "ozone-GATEWAY-BASE",
+                "ozone-OZONE_DATANODE-BASE",
+                "ozone-OZONE_MANAGER-BASE",
+                "ozone-OZONE_RECON-BASE",
+                "ozone-STORAGE_CONTAINER_MANAGER-BASE",
+                "phoenix-PHOENIX_QUERY_SERVER-BASE",
+                "ranger-RANGER_ADMIN-BASE",
+                "ranger-RANGER_TAGSYNC-BASE",
+                "ranger-RANGER_USERSYNC-BASE",
+                "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE",
+                "solr-SOLR_SERVER-BASE",
+                "spark_on_yarn-GATEWAY-BASE",
+                "spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE",
+                "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE",
+                "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_UI-BASE",
+                "tez-GATEWAY-BASE",
+                "yarn-JOBHISTORY-BASE",
+                "yarn-NODEMANAGER-BASE",
+                "yarn-RESOURCEMANAGER-BASE",
+                "zeppelin-ZEPPELIN_SERVER-BASE",
+                "zookeeper-SERVER-BASE"
+            ]
+        }
     ],
     "instantiator": {
-      "clusterName": "WWBank",
-      "hosts": [
-        {
-          "hostName": "YourHostname",
-          "hostTemplateRefName": "MasterTemplate"
-        }
-      ],
-      "variables": [
-        {
-          "name": "atlas-ATLAS_SERVER-BASE-atlas_admin_password",
-          "value": "BadPass#1"
-        },
-        {
-          "name": "das-data_analytics_studio_database_password",
-          "value": "cloudera"
-        },
-        {
-          "name": "hive-hive_metastore_database_host",
-          "value": "YourHostname"
-        },
-        {
-          "name": "hive-hive_metastore_database_password",
-          "value": "cloudera"
-        },
-        {
-          "name": "hue-database_host",
-          "value": "YourHostname"
-        },
-        {
-          "name": "hue-database_password",
-          "value": "cloudera"
-        },
-        {
-          "name": "hue-database_type",
-          "value": "mysql"
-        },
-        {
-          "name": "nifitoolkitca-nifi.toolkit.tls.ca.server.token",
-          "value": "ClouderaNiFi_123"
-        },
-        {
-          "name": "oozie-OOZIE_SERVER-BASE-oozie_database_host",
-          "value": "YourHostname"
-        },
-        {
-          "name": "oozie-OOZIE_SERVER-BASE-oozie_database_password",
-          "value": "cloudera"
-        },
-        {
-          "name": "oozie-OOZIE_SERVER-BASE-oozie_database_type",
-          "value": "mysql"
-        },
-        {
-          "name": "oozie-OOZIE_SERVER-BASE-oozie_database_user",
-          "value": "oozie"
-        },
-        {
-          "name": "ranger-RANGER_ADMIN-BASE-ranger_database_password",
-          "value": "cloudera"
-        },
-        {
-          "name": "ranger-keyadmin_user_password",
-          "value": "BadPass#1"
-        },
-        {
-          "name": "ranger-rangeradmin_user_password",
-          "value": "BadPass#1"
-        },
-        {
-          "name": "ranger-rangertagsync_user_password",
-          "value": "BadPass#1"
-        },
-        {
-          "name": "ranger-rangerusersync_user_password",
-          "value": "BadPass#1"
-        },
-        {
-          "name": "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE-schema.registry.storage.connector.password",
-          "value": "cloudera"
-        },
-        {
-          "name": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE-streams.messaging.manager.storage.connector.password",
-          "value": "cloudera"
-        },
-        {
-          "name": "streams_messaging_manager-cm.metrics.password",
-          "value": "admin"
-        }
-      ]
+        "clusterName": "WWBank",
+        "hosts": [
+            {
+                "hostName": "YourHostname",
+                "hostTemplateRefName": "MasterTemplate"
+            }
+        ],
+        "variables": [
+            {
+                "name": "atlas-ATLAS_SERVER-BASE-atlas_admin_password",
+                "value": "BadPass#1"
+            },
+            {
+                "name": "das-data_analytics_studio_database_password",
+                "value": "cloudera"
+            },
+            {
+                "name": "hive-hive_metastore_database_host",
+                "value": "BadPass#1"
+            },
+            {
+                "name": "hive-hive_metastore_database_password",
+                "value": "cloudera"
+            },
+            {
+                "name": "hue-database_host",
+                "value": "BadPass#1"
+            },
+            {
+                "name": "hue-database_password",
+                "value": "cloudera"
+            },
+            {
+                "name": "hue-database_type",
+                "value": "mysql"
+            },
+            {
+                "name": "nifitoolkitca-nifi.toolkit.tls.ca.server.token",
+                "value": "Cloudera_NiFi123"
+            },
+            {
+                "name": "oozie-OOZIE_SERVER-BASE-oozie_database_host",
+                "value": "YourHostname"
+            },
+            {
+                "name": "oozie-OOZIE_SERVER-BASE-oozie_database_password",
+                "value": "cloudera"
+            },
+            {
+                "name": "oozie-OOZIE_SERVER-BASE-oozie_database_type",
+                "value": "mysql"
+            },
+            {
+                "name": "oozie-OOZIE_SERVER-BASE-oozie_database_user",
+                "value": "oozie"
+            },
+            {
+                "name": "ranger-RANGER_ADMIN-BASE-ranger_database_password",
+                "value": "cloudera"
+            },
+            {
+                "name": "ranger-keyadmin_user_password",
+                "value": "<changeme>"
+            },
+            {
+                "name": "ranger-rangeradmin_user_password",
+                "value": "BadPass#1"
+            },
+            {
+                "name": "ranger-rangertagsync_user_password",
+                "value": "BadPass#1"
+            },
+            {
+                "name": "ranger-rangerusersync_user_password",
+                "value": "BadPass#1"
+            },
+            {
+                "name": "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE-schema.registry.storage.connector.password",
+                "value": "cloudera"
+            },
+            {
+                "name": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE-streams.messaging.manager.storage.connector.password",
+                "value": "cloudera"
+            },
+            {
+                "name": "streams_messaging_manager-cm.metrics.password",
+                "value": "admin"
+            }
+        ]
     },
     "products": [
-      {
-        "version": "0.8.0.2.0.1.0-29",
-        "product": "SCHEMAREGISTRY"
-      },
-      {
-        "version": "7.0.3-1.cdh7.0.3.p0.1635019",
-        "product": "CDH"
-      },
-      {
-        "version": "1.0.1.0",
-        "product": "CFM"
-      },
-      {
-        "version": "1.9.1-csa1.1.0.0-cdh7.0.3.0-79-1753674",
-        "product": "FLINK"
-      },
-      {
-        "version": "2.1.0.2.0.1.0-29",
-        "product": "STREAMS_MESSAGING_MANAGER"
-      }
+        {
+            "version": "0.8.0.2.0.1.0-29",
+            "product": "SCHEMAREGISTRY"
+        },
+        {
+            "version": "7.0.3-1.cdh7.0.3.p0.1635019",
+            "product": "CDH"
+        },
+        {
+            "version": "1.0.1.0",
+            "product": "CFM"
+        },
+        {
+            "version": "1.9.1-csa1.1.0.0-cdh7.0.3.0-79-1753674",
+            "product": "FLINK"
+        },
+        {
+            "version": "2.1.0.2.0.1.0-29",
+            "product": "STREAMS_MESSAGING_MANAGER"
+        }
     ],
     "repositories": [
-      "https://archive.cloudera.com/cdh7/7.0/parcels/",
-      "https://archive.cloudera.com/CFM/parcels/1.0.1.0/",
-      "http://archive.cloudera.com/csa/latest/parcels"
+        "https://archive.cloudera.com/cdh7/7.0/parcels/",
+        "http://archive.cloudera.com/csa/latest/parcels",
+        "https://archive.cloudera.com/CFM/parcels/1.0.1.0/",
+        "https://archive.cloudera.com/cdh7/{latest_supported}/parcels/"
     ],
     "services": [
-      {
-        "refName": "hive",
-        "serviceType": "HIVE",
-        "serviceConfigs": [
-          {
-            "name": "hive_metastore_database_password",
-            "variable": "hive-hive_metastore_database_password"
-          },
-          {
-            "name": "hive_metastore_database_host",
-            "variable": "hive-hive_metastore_database_host"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "hive-GATEWAY-BASE",
-            "roleType": "GATEWAY",
-            "base": true
-          },
-          {
-            "refName": "hive-HIVEMETASTORE-BASE",
-            "roleType": "HIVEMETASTORE",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "zookeeper",
-        "serviceType": "ZOOKEEPER",
-        "serviceConfigs": [
-          {
-            "name": "enableSecurity",
-            "value": "true"
-          },
-          {
-            "name": "quorum_auth_enable_sasl",
-            "value": "true"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "zookeeper-SERVER-BASE",
-            "roleType": "SERVER",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "atlas",
-        "serviceType": "ATLAS",
-        "serviceConfigs": [
-          {
-            "name": "kerberos.auth.enable",
-            "value": "true"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "atlas-ATLAS_SERVER-BASE",
-            "roleType": "ATLAS_SERVER",
-            "configs": [
-              {
-                "name": "atlas_authentication_method_file",
-                "value": "true"
-              },
-              {
-                "name": "atlas_admin_password",
-                "variable": "atlas-ATLAS_SERVER-BASE-atlas_admin_password"
-              }
+        {
+            "refName": "hive",
+            "serviceType": "HIVE",
+            "serviceConfigs": [
+                {
+                    "name": "hive_metastore_database_password",
+                    "variable": "hive-hive_metastore_database_password"
+                },
+                {
+                    "name": "hive_metastore_database_host",
+                    "variable": "hive-hive_metastore_database_host"
+                }
             ],
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "hive_on_tez",
-        "serviceType": "HIVE_ON_TEZ",
-        "roleConfigGroups": [
-          {
-            "refName": "hive_on_tez-HIVESERVER2-BASE",
-            "roleType": "HIVESERVER2",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "oozie",
-        "serviceType": "OOZIE",
-        "roleConfigGroups": [
-          {
-            "refName": "oozie-OOZIE_SERVER-BASE",
-            "roleType": "OOZIE_SERVER",
-            "configs": [
-              {
-                "name": "oozie_database_user",
-                "variable": "oozie-OOZIE_SERVER-BASE-oozie_database_user"
-              },
-              {
-                "name": "oozie_database_host",
-                "variable": "oozie-OOZIE_SERVER-BASE-oozie_database_host"
-              },
-              {
-                "name": "oozie_database_type",
-                "variable": "oozie-OOZIE_SERVER-BASE-oozie_database_type"
-              },
-              {
-                "name": "oozie_database_password",
-                "variable": "oozie-OOZIE_SERVER-BASE-oozie_database_password"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "hive-GATEWAY-BASE",
+                    "roleType": "GATEWAY",
+                    "base": true
+                },
+                {
+                    "refName": "hive-HIVEMETASTORE-BASE",
+                    "roleType": "HIVEMETASTORE",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "zookeeper",
+            "serviceType": "ZOOKEEPER",
+            "serviceConfigs": [
+                {
+                    "name": "enableSecurity",
+                    "value": "true"
+                },
+                {
+                    "name": "quorum_auth_enable_sasl",
+                    "value": "true"
+                }
             ],
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "ranger",
-        "serviceType": "RANGER",
-        "serviceConfigs": [
-          {
-            "name": "rangeradmin_user_password",
-            "variable": "ranger-rangeradmin_user_password"
-          },
-          {
-            "name": "rangertagsync_user_password",
-            "variable": "ranger-rangertagsync_user_password"
-          },
-          {
-            "name": "rangerusersync_user_password",
-            "variable": "ranger-rangerusersync_user_password"
-          },
-          {
-            "name": "keyadmin_user_password",
-            "variable": "ranger-keyadmin_user_password"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "ranger-RANGER_USERSYNC-BASE",
-            "roleType": "RANGER_USERSYNC",
-            "base": true
-          },
-          {
-            "refName": "ranger-RANGER_TAGSYNC-BASE",
-            "roleType": "RANGER_TAGSYNC",
-            "configs": [
-              {
-                "name": "conf/ranger-tagsync-site.xml_role_safety_valve",
-                "value": "<property><name>ranger.tagsync.atlas.hdfs.instance.cm.ranger.service</name><value>cm_hdfs</value></property>"
-              },
-              {
-                "name": "log4j_safety_valve",
-                "value": "root.logger=DEBUG,RFA"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "zookeeper-SERVER-BASE",
+                    "roleType": "SERVER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "atlas",
+            "serviceType": "ATLAS",
+            "serviceConfigs": [
+                {
+                    "name": "kerberos.auth.enable",
+                    "value": "true"
+                }
             ],
-            "base": true
-          },
-          {
-            "refName": "ranger-RANGER_ADMIN-BASE",
-            "roleType": "RANGER_ADMIN",
-            "configs": [
-              {
-                "name": "ranger_database_host",
-                "value": "127.0.0.1"
-              },
-              {
-                "name": "ranger_database_user",
-                "value": "ranger"
-              },
-              {
-                "name": "ranger_database_password",
-                "variable": "ranger-RANGER_ADMIN-BASE-ranger_database_password"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "atlas-ATLAS_SERVER-BASE",
+                    "roleType": "ATLAS_SERVER",
+                    "configs": [
+                        {
+                            "name": "atlas_authentication_method_file",
+                            "value": "true"
+                        },
+                        {
+                            "name": "atlas_admin_password",
+                            "variable": "atlas-ATLAS_SERVER-BASE-atlas_admin_password"
+                        }
+                    ],
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "hive_on_tez",
+            "serviceType": "HIVE_ON_TEZ",
+            "roleConfigGroups": [
+                {
+                    "refName": "hive_on_tez-HIVESERVER2-BASE",
+                    "roleType": "HIVESERVER2",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "oozie",
+            "serviceType": "OOZIE",
+            "roleConfigGroups": [
+                {
+                    "refName": "oozie-OOZIE_SERVER-BASE",
+                    "roleType": "OOZIE_SERVER",
+                    "configs": [
+                        {
+                            "name": "oozie_database_user",
+                            "variable": "oozie-OOZIE_SERVER-BASE-oozie_database_user"
+                        },
+                        {
+                            "name": "oozie_database_host",
+                            "variable": "oozie-OOZIE_SERVER-BASE-oozie_database_host"
+                        },
+                        {
+                            "name": "oozie_database_type",
+                            "variable": "oozie-OOZIE_SERVER-BASE-oozie_database_type"
+                        },
+                        {
+                            "name": "oozie_database_password",
+                            "variable": "oozie-OOZIE_SERVER-BASE-oozie_database_password"
+                        }
+                    ],
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "ranger",
+            "serviceType": "RANGER",
+            "serviceConfigs": [
+                {
+                    "name": "rangeradmin_user_password",
+                    "variable": "ranger-rangeradmin_user_password"
+                },
+                {
+                    "name": "rangertagsync_user_password",
+                    "variable": "ranger-rangertagsync_user_password"
+                },
+                {
+                    "name": "rangerusersync_user_password",
+                    "variable": "ranger-rangerusersync_user_password"
+                },
+                {
+                    "name": "keyadmin_user_password",
+                    "variable": "ranger-keyadmin_user_password"
+                }
             ],
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "tez",
-        "serviceType": "TEZ",
-        "roleConfigGroups": [
-          {
-            "refName": "tez-GATEWAY-BASE",
-            "roleType": "GATEWAY",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "zeppelin",
-        "serviceType": "ZEPPELIN",
-        "serviceConfigs": [
-          {
-            "name": "zeppelin.authentication.method.kerberos",
-            "value": "true"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "zeppelin-ZEPPELIN_SERVER-BASE",
-            "roleType": "ZEPPELIN_SERVER",
-            "configs": [
-              {
-                "name": "zeppelin.shiro.urls.block",
-                "value": "/api/version = anon\n/api/interpreter/setting/restart/** = authc\n/** = authc"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "ranger-RANGER_USERSYNC-BASE",
+                    "roleType": "RANGER_USERSYNC",
+                    "base": true
+                },
+                {
+                    "refName": "ranger-RANGER_TAGSYNC-BASE",
+                    "roleType": "RANGER_TAGSYNC",
+                    "configs": [
+                        {
+                            "name": "conf/ranger-tagsync-site.xml_role_safety_valve",
+                            "value": "<property><name>ranger.tagsync.atlas.hdfs.instance.cm.ranger.service</name><value>cm_hdfs</value></property>"
+                        },
+                        {
+                            "name": "log4j_safety_valve",
+                            "value": "root.logger=DEBUG,RFA"
+                        }
+                    ],
+                    "base": true
+                },
+                {
+                    "refName": "ranger-RANGER_ADMIN-BASE",
+                    "roleType": "RANGER_ADMIN",
+                    "configs": [
+                        {
+                            "name": "ranger_database_host",
+                            "value": "127.0.0.1"
+                        },
+                        {
+                            "name": "ranger_database_user",
+                            "value": "ranger"
+                        },
+                        {
+                            "name": "ranger_database_password",
+                            "variable": "ranger-RANGER_ADMIN-BASE-ranger_database_password"
+                        }
+                    ],
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "tez",
+            "serviceType": "TEZ",
+            "roleConfigGroups": [
+                {
+                    "refName": "tez-GATEWAY-BASE",
+                    "roleType": "GATEWAY",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "nifiregistry",
+            "serviceType": "NIFIREGISTRY",
+            "serviceConfigs": [
+                {
+                    "name": "kerberos.auth.enabled",
+                    "value": "true"
+                },
+                {
+                    "name": "nifitoolkitca_service",
+                    "ref": "nifitoolkitca"
+                }
             ],
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "livy",
-        "serviceType": "LIVY",
-        "roleConfigGroups": [
-          {
-            "refName": "livy-LIVY_SERVER-BASE",
-            "roleType": "LIVY_SERVER",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "spark_on_yarn",
-        "serviceType": "SPARK_ON_YARN",
-        "roleConfigGroups": [
-          {
-            "refName": "spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE",
-            "roleType": "SPARK_YARN_HISTORY_SERVER",
-            "base": true
-          },
-          {
-            "refName": "spark_on_yarn-GATEWAY-BASE",
-            "roleType": "GATEWAY",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "solr",
-        "serviceType": "SOLR",
-        "serviceConfigs": [
-          {
-            "name": "solr_security_authentication",
-            "value": "kerberos"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "solr-SOLR_SERVER-BASE",
-            "roleType": "SOLR_SERVER",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "das",
-        "serviceType": "DAS",
-        "serviceConfigs": [
-          {
-            "name": "hs2_service",
-            "ref": "hive_on_tez"
-          },
-          {
-            "name": "data_analytics_studio_database_host",
-            "value": "127.0.0.1"
-          },
-          {
-            "name": "tez_service",
-            "ref": "tez"
-          },
-          {
-            "name": "ranger_service",
-            "ref": "ranger"
-          },
-          {
-            "name": "data_analytics_studio_database_password",
-            "variable": "das-data_analytics_studio_database_password"
-          },
-          {
-            "name": "kerberos.auth.enabled",
-            "value": "true"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "das-DAS_EVENT_PROCESSOR-BASE",
-            "roleType": "DAS_EVENT_PROCESSOR",
-            "base": true
-          },
-          {
-            "refName": "das-DAS_WEBAPP-BASE",
-            "roleType": "DAS_WEBAPP",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "kafka",
-        "serviceType": "KAFKA",
-        "serviceConfigs": [
-          {
-            "name": "transaction.state.log.min.isr",
-            "value": "1"
-          },
-          {
-            "name": "transaction.state.log.replication.factor",
-            "value": "1"
-          },
-          {
-            "name": "kerberos.auth.enable",
-            "value": "true"
-          },
-          {
-            "name": "offsets.topic.replication.factor",
-            "value": "1"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "kafka-KAFKA_BROKER-BASE",
-            "roleType": "KAFKA_BROKER",
-            "configs": [
-              {
-                "name": "broker_max_heap_size",
-                "value": "512"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "nifiregistry-NIFI_REGISTRY_SERVER-BASE",
+                    "roleType": "NIFI_REGISTRY_SERVER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "zeppelin",
+            "serviceType": "ZEPPELIN",
+            "serviceConfigs": [
+                {
+                    "name": "zeppelin.authentication.method.kerberos",
+                    "value": "true"
+                }
             ],
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "hue",
-        "serviceType": "HUE",
-        "serviceConfigs": [
-          {
-            "name": "database_type",
-            "variable": "hue-database_type"
-          },
-          {
-            "name": "database_password",
-            "variable": "hue-database_password"
-          },
-          {
-            "name": "database_host",
-            "variable": "hue-database_host"
-          },
-          {
-            "name": "auth_backend",
-            "value": "desktop.auth.backend.PamBackend"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "hue-HUE_SERVER-BASE",
-            "roleType": "HUE_SERVER",
-            "base": true
-          },
-          {
-            "refName": "hue-KT_RENEWER-BASE",
-            "roleType": "KT_RENEWER",
-            "base": true
-          },
-          {
-            "refName": "hue-HUE_LOAD_BALANCER-BASE",
-            "roleType": "HUE_LOAD_BALANCER",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "hdfs",
-        "serviceType": "HDFS",
-        "serviceConfigs": [
-          {
-            "name": "dfs_replication",
-            "value": "1"
-          },
-          {
-            "name": "core_site_safety_valve",
-            "value": "<property><name>hadoop.proxyuser.zeppelin.groups</name><value>*</value></property><property><name>hadoop.proxyuser.zeppelin.hosts</name><value>*</value></property>"
-          },
-          {
-            "name": "hadoop_security_authentication",
-            "value": "kerberos"
-          },
-          {
-            "name": "hdfs_under_replicated_blocks_thresholds",
-            "value": "{\"warning\":\"never\",\"critical\":\"never\"}"
-          },
-          {
-            "name": "hadoop_secure_web_ui",
-            "value": "true"
-          },
-          {
-            "name": "dfs_encrypt_data_transfer_algorithm",
-            "value": "AES/CTR/NoPadding"
-          },
-          {
-            "name": "hadoop_security_authorization",
-            "value": "true"
-          },
-          {
-            "name": "hdfs_verify_ec_with_topology_enabled",
-            "value": "false"
-          },
-          {
-            "name": "enable_ranger_authorization",
-            "value": "true"
-          },
-          {
-            "name": "dfs_permissions_supergroup",
-            "value": "etl"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "hdfs-NAMENODE-BASE",
-            "roleType": "NAMENODE",
-            "base": true
-          },
-          {
-            "refName": "hdfs-SECONDARYNAMENODE-BASE",
-            "roleType": "SECONDARYNAMENODE",
-            "base": true
-          },
-          {
-            "refName": "hdfs-DATANODE-BASE",
-            "roleType": "DATANODE",
-            "configs": [
-              {
-                "name": "dfs_datanode_data_dir_perm",
-                "value": "700"
-              },
-              {
-                "name": "dfs_datanode_port",
-                "value": "1004"
-              },
-              {
-                "name": "dfs_datanode_http_port",
-                "value": "1006"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "zeppelin-ZEPPELIN_SERVER-BASE",
+                    "roleType": "ZEPPELIN_SERVER",
+                    "configs": [
+                        {
+                            "name": "zeppelin.shiro.urls.block",
+                            "value": "/api/version = anon\n/api/interpreter/setting/restart/** = authc\n/** = authc"
+                        }
+                    ],
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "nifi",
+            "serviceType": "NIFI",
+            "serviceConfigs": [
+                {
+                    "name": "zookeeper_service",
+                    "ref": "zookeeper"
+                },
+                {
+                    "name": "kerberos.auth.enabled",
+                    "value": "true"
+                }
             ],
-            "base": true
-          },
-          {
-            "refName": "hdfs-BALANCER-BASE",
-            "roleType": "BALANCER",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "yarn",
-        "serviceType": "YARN",
-        "serviceConfigs": [
-          {
-            "name": "hadoop_secure_web_ui",
-            "value": "true"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "yarn-RESOURCEMANAGER-BASE",
-            "roleType": "RESOURCEMANAGER",
-            "configs": [
-              {
-                "name": "yarn_scheduler_maximum_allocation_mb",
-                "value": "6144"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "nifi-NIFI_NODE-BASE",
+                    "roleType": "NIFI_NODE",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "flink",
+            "serviceType": "FLINK",
+            "serviceConfigs": [
+                {
+                    "name": "yarn_service",
+                    "ref": "yarn"
+                },
+                {
+                    "name": "zookeeper_service",
+                    "ref": "zookeeper"
+                },
+                {
+                    "name": "kerberos.auth.enabled",
+                    "value": "true"
+                },
+                {
+                    "name": "hdfs_service",
+                    "ref": "hdfs"
+                }
             ],
-            "base": true
-          },
-          {
-            "refName": "yarn-NODEMANAGER-BASE",
-            "roleType": "NODEMANAGER",
-            "configs": [
-              {
-                "name": "yarn_nodemanager_resource_memory_mb",
-                "value": "6144"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "flink-GATEWAY-BASE",
+                    "roleType": "GATEWAY",
+                    "base": true
+                },
+                {
+                    "refName": "flink-FLINK_HISTORY_SERVER-BASE",
+                    "roleType": "FLINK_HISTORY_SERVER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "livy",
+            "serviceType": "LIVY",
+            "roleConfigGroups": [
+                {
+                    "refName": "livy-LIVY_SERVER-BASE",
+                    "roleType": "LIVY_SERVER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "phoenix",
+            "serviceType": "PHOENIX",
+            "serviceConfigs": [
+                {
+                    "name": "hdfs_service",
+                    "ref": "hdfs"
+                },
+                {
+                    "name": "zookeeper_service",
+                    "ref": "zookeeper"
+                },
+                {
+                    "name": "hbase_service",
+                    "ref": "hbase"
+                }
             ],
-            "base": true
-          },
-          {
-            "refName": "yarn-JOBHISTORY-BASE",
-            "roleType": "JOBHISTORY",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "hbase",
-        "serviceType": "HBASE",
-        "serviceConfigs": [
-          {
-            "name": "hbase_security_authorization",
-            "value": "true"
-          },
-          {
-            "name": "hbase_atlas_hook_enable",
-            "value": "true"
-          },
-          {
-            "name": "hbase_thriftserver_security_authentication",
-            "value": "auth-conf"
-          },
-          {
-            "name": "hbase_security_authentication",
-            "value": "kerberos"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "hbase-REGIONSERVER-BASE",
-            "roleType": "REGIONSERVER",
-            "base": true
-          },
-          {
-            "refName": "hbase-MASTER-BASE",
-            "roleType": "MASTER",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "phoenix",
-        "serviceType": "PHOENIX",
-        "serviceConfigs": [
-          {
-            "name": "hdfs_service",
-            "ref": "hdfs"
-          },
-          {
-            "name": "zookeeper_service",
-            "ref": "zookeeper"
-          },
-          {
-            "name": "hbase_service",
-            "ref": "hbase"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "phoenix-PHOENIX_QUERY_SERVER-BASE",
-            "roleType": "PHOENIX_QUERY_SERVER",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "schemaregistry",
-        "serviceType": "SCHEMAREGISTRY",
-        "serviceConfigs": [
-          {
-            "name": "kerberos.auth.enable",
-            "value": "true"
-          },
-          {
-            "name": "zookeeper_service",
-            "ref": "zookeeper"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE",
-            "roleType": "SCHEMA_REGISTRY_SERVER",
-            "configs": [
-              {
-                "name": "schema.registry.storage.connector.password",
-                "variable": "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE-schema.registry.storage.connector.password"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "phoenix-PHOENIX_QUERY_SERVER-BASE",
+                    "roleType": "PHOENIX_QUERY_SERVER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "spark_on_yarn",
+            "serviceType": "SPARK_ON_YARN",
+            "roleConfigGroups": [
+                {
+                    "refName": "spark_on_yarn-SPARK_YARN_HISTORY_SERVER-BASE",
+                    "roleType": "SPARK_YARN_HISTORY_SERVER",
+                    "base": true
+                },
+                {
+                    "refName": "spark_on_yarn-GATEWAY-BASE",
+                    "roleType": "GATEWAY",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "das",
+            "serviceType": "DAS",
+            "serviceConfigs": [
+                {
+                    "name": "hs2_service",
+                    "ref": "hive_on_tez"
+                },
+                {
+                    "name": "data_analytics_studio_database_host",
+                    "value": "127.0.0.1"
+                },
+                {
+                    "name": "tez_service",
+                    "ref": "tez"
+                },
+                {
+                    "name": "ranger_service",
+                    "ref": "ranger"
+                },
+                {
+                    "name": "data_analytics_studio_database_password",
+                    "variable": "das-data_analytics_studio_database_password"
+                },
+                {
+                    "name": "kerberos.auth.enabled",
+                    "value": "true"
+                }
             ],
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "nifi",
-        "serviceType": "NIFI",
-        "serviceConfigs": [
-          {
-            "name": "zookeeper_service",
-            "ref": "zookeeper"
-          },
-          {
-            "name": "kerberos.auth.enabled",
-            "value": "true"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "nifi-NIFI_NODE-BASE",
-            "roleType": "NIFI_NODE",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "nifitoolkitca",
-        "serviceType": "NIFITOOLKITCA",
-        "serviceConfigs": [
-          {
-            "name": "nifi.toolkit.tls.ca.server.token",
-            "variable": "nifitoolkitca-nifi.toolkit.tls.ca.server.token"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE",
-            "roleType": "NIFI_TOOLKIT_SERVER",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "nifiregistry",
-        "serviceType": "NIFIREGISTRY",
-        "serviceConfigs": [
-          {
-            "name": "kerberos.auth.enabled",
-            "value": "true"
-          },
-          {
-            "name": "nifitoolkitca_service",
-            "ref": "nifitoolkitca"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "nifiregistry-NIFI_REGISTRY_SERVER-BASE",
-            "roleType": "NIFI_REGISTRY_SERVER",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "streams_messaging_manager",
-        "serviceType": "STREAMS_MESSAGING_MANAGER",
-        "serviceConfigs": [
-          {
-            "name": "cm.metrics.password",
-            "variable": "streams_messaging_manager-cm.metrics.password"
-          },
-          {
-            "name": "kafka_service",
-            "ref": "kafka"
-          },
-          {
-            "name": "cm.metrics.service.name",
-            "value": "kafka"
-          },
-          {
-            "name": "cm.metrics.host",
-            "value": "YourHostname"
-          },
-          {
-            "name": "zookeeper_service",
-            "ref": "zookeeper"
-          },
-          {
-            "name": "kerberos.auth.enable",
-            "value": "true"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE",
-            "roleType": "STREAMS_MESSAGING_MANAGER_SERVER",
-            "configs": [
-              {
-                "name": "streams.messaging.manager.storage.connector.password",
-                "variable": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE-streams.messaging.manager.storage.connector.password"
-              },
-              {
-                "name": "streams.messaging.manager.storage.connector.connectURI",
-                "value": "jdbc:mysql://YourHostname:3306/streamsmsgmgr"
-              },
-              {
-                "name": "SMM_HEAP_SIZE",
-                "value": "2048"
-              },
-              {
-                "name": "streams.messaging.manager.kafka.client.security.protocol",
-                "value": "PLAINTEXT"
-              },
-              {
-                "name": "streams.messaging.manager.schema.registry.url",
-                "value": "http://YourHostname:7788/api/v1"
-              }
+            "roleConfigGroups": [
+                {
+                    "refName": "das-DAS_EVENT_PROCESSOR-BASE",
+                    "roleType": "DAS_EVENT_PROCESSOR",
+                    "base": true
+                },
+                {
+                    "refName": "das-DAS_WEBAPP-BASE",
+                    "roleType": "DAS_WEBAPP",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "kafka",
+            "serviceType": "KAFKA",
+            "serviceConfigs": [
+                {
+                    "name": "transaction.state.log.min.isr",
+                    "value": "1"
+                },
+                {
+                    "name": "transaction.state.log.replication.factor",
+                    "value": "1"
+                },
+                {
+                    "name": "kerberos.auth.enable",
+                    "value": "true"
+                },
+                {
+                    "name": "offsets.topic.replication.factor",
+                    "value": "1"
+                }
             ],
-            "base": true
-          },
-          {
-            "refName": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_UI-BASE",
-            "roleType": "STREAMS_MESSAGING_MANAGER_UI",
-            "base": true
-          }
-        ]
-      },
-      {
-        "refName": "flink",
-        "serviceType": "FLINK",
-        "serviceConfigs": [
-          {
-            "name": "yarn_service",
-            "ref": "yarn"
-          },
-          {
-            "name": "zookeeper_service",
-            "ref": "zookeeper"
-          },
-          {
-            "name": "kerberos.auth.enabled",
-            "value": "true"
-          },
-          {
-            "name": "hdfs_service",
-            "ref": "hdfs"
-          }
-        ],
-        "roleConfigGroups": [
-          {
-            "refName": "flink-GATEWAY-BASE",
-            "roleType": "GATEWAY",
-            "base": true
-          },
-          {
-            "refName": "flink-FLINK_HISTORY_SERVER-BASE",
-            "roleType": "FLINK_HISTORY_SERVER",
-            "base": true
-          }
-        ]
-      }
+            "roleConfigGroups": [
+                {
+                    "refName": "kafka-KAFKA_BROKER-BASE",
+                    "roleType": "KAFKA_BROKER",
+                    "configs": [
+                        {
+                            "name": "broker_max_heap_size",
+                            "value": "512"
+                        }
+                    ],
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "solr",
+            "serviceType": "SOLR",
+            "serviceConfigs": [
+                {
+                    "name": "solr_security_authentication",
+                    "value": "kerberos"
+                }
+            ],
+            "roleConfigGroups": [
+                {
+                    "refName": "solr-SOLR_SERVER-BASE",
+                    "roleType": "SOLR_SERVER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "hue",
+            "serviceType": "HUE",
+            "serviceConfigs": [
+                {
+                    "name": "database_type",
+                    "variable": "hue-database_type"
+                },
+                {
+                    "name": "database_password",
+                    "variable": "hue-database_password"
+                },
+                {
+                    "name": "database_host",
+                    "variable": "hue-database_host"
+                },
+                {
+                    "name": "auth_backend",
+                    "value": "desktop.auth.backend.PamBackend"
+                }
+            ],
+            "roleConfigGroups": [
+                {
+                    "refName": "hue-HUE_SERVER-BASE",
+                    "roleType": "HUE_SERVER",
+                    "base": true
+                },
+                {
+                    "refName": "hue-KT_RENEWER-BASE",
+                    "roleType": "KT_RENEWER",
+                    "base": true
+                },
+                {
+                    "refName": "hue-HUE_LOAD_BALANCER-BASE",
+                    "roleType": "HUE_LOAD_BALANCER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "hdfs",
+            "serviceType": "HDFS",
+            "serviceConfigs": [
+                {
+                    "name": "dfs_replication",
+                    "value": "1"
+                },
+                {
+                    "name": "core_site_safety_valve",
+                    "value": "<property><name>hadoop.proxyuser.zeppelin.groups</name><value>*</value></property><property><name>hadoop.proxyuser.zeppelin.hosts</name><value>*</value></property>"
+                },
+                {
+                    "name": "hadoop_security_authentication",
+                    "value": "kerberos"
+                },
+                {
+                    "name": "hdfs_under_replicated_blocks_thresholds",
+                    "value": "{\"warning\":\"never\",\"critical\":\"never\"}"
+                },
+                {
+                    "name": "hadoop_secure_web_ui",
+                    "value": "true"
+                },
+                {
+                    "name": "dfs_encrypt_data_transfer_algorithm",
+                    "value": "AES/CTR/NoPadding"
+                },
+                {
+                    "name": "hadoop_security_authorization",
+                    "value": "true"
+                },
+                {
+                    "name": "hdfs_verify_ec_with_topology_enabled",
+                    "value": "false"
+                },
+                {
+                    "name": "dfs_permissions_supergroup",
+                    "value": "etl"
+                },
+                {
+                    "name": "enable_ranger_authorization",
+                    "value": "true"
+                }
+            ],
+            "roleConfigGroups": [
+                {
+                    "refName": "hdfs-NAMENODE-BASE",
+                    "roleType": "NAMENODE",
+                    "base": true
+                },
+                {
+                    "refName": "hdfs-SECONDARYNAMENODE-BASE",
+                    "roleType": "SECONDARYNAMENODE",
+                    "base": true
+                },
+                {
+                    "refName": "hdfs-DATANODE-BASE",
+                    "roleType": "DATANODE",
+                    "configs": [
+                        {
+                            "name": "dfs_datanode_data_dir_perm",
+                            "value": "700"
+                        },
+                        {
+                            "name": "dfs_datanode_port",
+                            "value": "1004"
+                        },
+                        {
+                            "name": "dfs_datanode_http_port",
+                            "value": "1006"
+                        }
+                    ],
+                    "base": true
+                },
+                {
+                    "refName": "hdfs-BALANCER-BASE",
+                    "roleType": "BALANCER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "schemaregistry",
+            "serviceType": "SCHEMAREGISTRY",
+            "serviceConfigs": [
+                {
+                    "name": "kerberos.auth.enable",
+                    "value": "true"
+                },
+                {
+                    "name": "zookeeper_service",
+                    "ref": "zookeeper"
+                }
+            ],
+            "roleConfigGroups": [
+                {
+                    "refName": "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE",
+                    "roleType": "SCHEMA_REGISTRY_SERVER",
+                    "configs": [
+                        {
+                            "name": "schema.registry.storage.connector.password",
+                            "variable": "schemaregistry-SCHEMA_REGISTRY_SERVER-BASE-schema.registry.storage.connector.password"
+                        }
+                    ],
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "yarn",
+            "serviceType": "YARN",
+            "serviceConfigs": [
+                {
+                    "name": "hadoop_secure_web_ui",
+                    "value": "true"
+                }
+            ],
+            "roleConfigGroups": [
+                {
+                    "refName": "yarn-RESOURCEMANAGER-BASE",
+                    "roleType": "RESOURCEMANAGER",
+                    "configs": [
+                        {
+                            "name": "yarn_scheduler_maximum_allocation_mb",
+                            "value": "6144"
+                        }
+                    ],
+                    "base": true
+                },
+                {
+                    "refName": "yarn-NODEMANAGER-BASE",
+                    "roleType": "NODEMANAGER",
+                    "configs": [
+                        {
+                            "name": "yarn_nodemanager_resource_memory_mb",
+                            "value": "6144"
+                        }
+                    ],
+                    "base": true
+                },
+                {
+                    "refName": "yarn-JOBHISTORY-BASE",
+                    "roleType": "JOBHISTORY",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "streams_messaging_manager",
+            "serviceType": "STREAMS_MESSAGING_MANAGER",
+            "serviceConfigs": [
+                {
+                    "name": "cm.metrics.password",
+                    "variable": "streams_messaging_manager-cm.metrics.password"
+                },
+                {
+                    "name": "kafka_service",
+                    "ref": "kafka"
+                },
+                {
+                    "name": "cm.metrics.service.name",
+                    "value": "kafka"
+                },
+                {
+                    "name": "cm.metrics.host",
+                    "value": "YourHostname"
+                },
+                {
+                    "name": "zookeeper_service",
+                    "ref": "zookeeper"
+                },
+                {
+                    "name": "kerberos.auth.enable",
+                    "value": "true"
+                }
+            ],
+            "roleConfigGroups": [
+                {
+                    "refName": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE",
+                    "roleType": "STREAMS_MESSAGING_MANAGER_SERVER",
+                    "configs": [
+                        {
+                            "name": "streams.messaging.manager.storage.connector.password",
+                            "variable": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_SERVER-BASE-streams.messaging.manager.storage.connector.password"
+                        },
+                        {
+                            "name": "streams.messaging.manager.storage.connector.connectURI",
+                            "value": "jdbc:mysql://YourHostname:3306/streamsmsgmgr"
+                        },
+                        {
+                            "name": "SMM_HEAP_SIZE",
+                            "value": "2048"
+                        },
+                        {
+                            "name": "streams.messaging.manager.kafka.client.security.protocol",
+                            "value": "PLAINTEXT"
+                        },
+                        {
+                            "name": "streams.messaging.manager.schema.registry.url",
+                            "value": "http://YourHostname:7788/api/v1"
+                        }
+                    ],
+                    "base": true
+                },
+                {
+                    "refName": "streams_messaging_manager-STREAMS_MESSAGING_MANAGER_UI-BASE",
+                    "roleType": "STREAMS_MESSAGING_MANAGER_UI",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "hbase",
+            "serviceType": "HBASE",
+            "serviceConfigs": [
+                {
+                    "name": "hbase_security_authorization",
+                    "value": "true"
+                },
+                {
+                    "name": "hbase_atlas_hook_enable",
+                    "value": "true"
+                },
+                {
+                    "name": "hbase_thriftserver_security_authentication",
+                    "value": "auth-conf"
+                },
+                {
+                    "name": "hbase_security_authentication",
+                    "value": "kerberos"
+                }
+            ],
+            "roleConfigGroups": [
+                {
+                    "refName": "hbase-REGIONSERVER-BASE",
+                    "roleType": "REGIONSERVER",
+                    "base": true
+                },
+                {
+                    "refName": "hbase-MASTER-BASE",
+                    "roleType": "MASTER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "nifitoolkitca",
+            "serviceType": "NIFITOOLKITCA",
+            "serviceConfigs": [
+                {
+                    "name": "nifi.toolkit.tls.ca.server.token",
+                    "variable": "nifitoolkitca-nifi.toolkit.tls.ca.server.token"
+                }
+            ],
+            "roleConfigGroups": [
+                {
+                    "refName": "nifitoolkitca-NIFI_TOOLKIT_SERVER-BASE",
+                    "roleType": "NIFI_TOOLKIT_SERVER",
+                    "base": true
+                }
+            ]
+        },
+        {
+            "refName": "ozone",
+            "serviceType": "OZONE",
+            "serviceConfigs": [
+                {
+                    "name": "ranger_service",
+                    "ref": "ranger"
+                },
+                {
+                    "name": "ozone.security.enabled",
+                    "value": "true"
+                },
+                {
+                    "name": "hdfs_service",
+                    "ref": "hdfs"
+                }
+            ],
+            "roleConfigGroups": [
+                {
+                    "refName": "ozone-GATEWAY-BASE",
+                    "roleType": "GATEWAY",
+                    "base": true
+                },
+                {
+                    "refName": "ozone-OZONE_RECON-BASE",
+                    "roleType": "OZONE_RECON",
+                    "base": true
+                },
+                {
+                    "refName": "ozone-STORAGE_CONTAINER_MANAGER-BASE",
+                    "roleType": "STORAGE_CONTAINER_MANAGER",
+                    "base": true
+                },
+                {
+                    "refName": "ozone-OZONE_DATANODE-BASE",
+                    "roleType": "OZONE_DATANODE",
+                    "base": true
+                },
+                {
+                    "refName": "ozone-OZONE_MANAGER-BASE",
+                    "roleType": "OZONE_MANAGER",
+                    "base": true
+                }
+            ]
+        }
     ]
-  }
 }
