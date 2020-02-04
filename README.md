@@ -18,9 +18,9 @@ Below are instructions for creating the cluster with or without CDSW service. CD
 - Docker device disk: at least 200GB SSD disk.
   - Node: you need a fast disk more than you need a large disk: aim for a disk with 3000 IOPS. This might mean choosing a 1TB disk.
 
-### Provisioning Cluster with Schema Registry, SMM, SRM or other parcels
+### Provisioning Cluster with Trial parcels
 
-Currently, there is no automation process to download parcels for services such as Schema Registry. You need to download the required files from the official Cloudera website on your laptop. Then, sftp the `.parcel`, `.sha` and `.jar` files into the root home directory. The script takes care of placing these files into the correct folders during installation.
+Currently, there is no automation process to download parcels for services such as Schema Registry. You need to download the required files from the official Cloudera website on your laptop. Then, sftp the `.parcel`, `.sha` and `.jar` files into the `/home/centos` or `/root` directory. The script takes care of placing these files into the correct folders during installation.
 
 For example, you can install Schema Registry once your host looks like the below:
 
