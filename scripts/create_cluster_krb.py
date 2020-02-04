@@ -55,7 +55,7 @@ body.items=[
     cm_client.ApiConfig(name='KDC_HOST', value='YourHostname'),
     cm_client.ApiConfig(name='KDC_ADMIN_HOST', value='YourHostname'),
     cm_client.ApiConfig(name='KDC_TYPE', value='MIT KDC'),  
-    cm_client.ApiConfig(name='KRB_ENC_TYPES', value='aes256-cts aes128-cts rc4-hmac'), 
+    cm_client.ApiConfig(name='KRB_ENC_TYPES', value='aes256-cts-hmac-sha1-96 aes128-cts-hmac-sha1-96 arcfour-hmac-md5'), 
     cm_client.ApiConfig(name='SECURITY_REALM', value='CLOUDERA.COM'), 
     cm_client.ApiConfig(name='KRB_MANAGE_KRB5_CONF', value='true')
     ]
