@@ -423,6 +423,10 @@
                 {
                     "refName": "nifi-NIFI_NODE-BASE",
                     "roleType": "NIFI_NODE",
+                    "configs" : [ {
+                       "name" : "nifi.cluster.flow.election.max.wait.time",
+                       "value" : "1 min"
+                     } ],                    
                     "base": true
                 }
             ]
