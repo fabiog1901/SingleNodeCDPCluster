@@ -1,4 +1,4 @@
-#! /bin/bash
+#! /bin/bash 
 echo "-- Configure and optimize the OS"
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 echo never > /sys/kernel/mm/transparent_hugepage/defrag
