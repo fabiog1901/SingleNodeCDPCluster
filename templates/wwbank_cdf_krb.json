@@ -24,7 +24,12 @@
                 "hue-HUE_LOAD_BALANCER-BASE",
                 "hue-HUE_SERVER-BASE",
                 "hue-KT_RENEWER-BASE",
+				"impala-CATALOGSERVER-BASE",
+                "impala-IMPALAD-BASE",
+                "impala-STATESTORE-BASE",                       
                 "kafka-KAFKA_BROKER-BASE",
+                "kudu-KUDU_MASTER-BASE",
+                "kudu-KUDU_TSERVER-BASE",                 
                 "livy-LIVY_SERVER-BASE",
                 "nifi-NIFI_NODE-BASE",
                 "nifiregistry-NIFI_REGISTRY_SERVER-BASE",
@@ -63,6 +68,22 @@
             }
         ],
         "variables": [
+            {
+              "name": "kudu-KUDU_MASTER-BASE-fs_data_dirs",
+              "value": "/kudu/mdir"
+            },
+            {
+              "name": "kudu-KUDU_MASTER-BASE-fs_wal_dir",
+              "value": "/kudu/mwal"
+            },
+            {
+              "name": "kudu-KUDU_TSERVER-BASE-fs_data_dirs",
+              "value": "/kudu/tdir"
+            },
+            {
+              "name": "kudu-KUDU_TSERVER-BASE-fs_wal_dir",
+              "value": "/kudu/twal"
+            },                
             {
                 "name": "atlas-ATLAS_SERVER-BASE-atlas_admin_password",
                 "value": "BadPass#1"
@@ -477,6 +498,89 @@
             ]
         },
         {
+          "refName": "kudu",
+          "roleConfigGroups": [
+            {
+              "base": true,
+              "configs": [
+                {
+                  "name": "fs_wal_dir",
+                  "variable": "kudu-KUDU_MASTER-BASE-fs_wal_dir"
+                },
+                {
+                  "name": "fs_data_dirs",
+                  "variable": "kudu-KUDU_MASTER-BASE-fs_data_dirs"
+                }
+              ],
+              "refName": "kudu-KUDU_MASTER-BASE",
+              "roleType": "KUDU_MASTER"
+            },
+            {
+              "base": true,
+              "configs": [
+                {
+                  "name": "fs_wal_dir",
+                  "variable": "kudu-KUDU_TSERVER-BASE-fs_wal_dir"
+                },
+                {
+                  "name": "fs_data_dirs",
+                  "variable": "kudu-KUDU_TSERVER-BASE-fs_data_dirs"
+                }
+              ],
+              "refName": "kudu-KUDU_TSERVER-BASE",
+              "roleType": "KUDU_TSERVER"
+            }
+          ],
+          "serviceType": "KUDU"
+        },        
+        {
+          "refName": "impala",
+          "roleConfigGroups": [
+            {
+              "base": true,
+              "refName": "impala-IMPALAD-BASE",
+              "roleType": "IMPALAD"
+            },
+            {
+              "base": true,
+              "refName": "impala-STATESTORE-BASE",
+              "roleType": "STATESTORE"
+            },
+            {
+              "base": true,
+              "refName": "impala-CATALOGSERVER-BASE",
+              "roleType": "CATALOGSERVER"
+            }
+          ],
+          "serviceConfigs": [
+            {
+              "name": "ranger_service",
+              "ref": "ranger"
+            },
+            {
+              "name": "kudu_service",
+              "ref": "kudu"
+            },
+            {
+              "name": "hdfs_service",
+              "ref": "hdfs"
+            },
+            {
+              "name": "hive_service",
+              "ref": "hive"
+            },
+            {
+              "name": "atlas_service",
+              "ref": "atlas"
+            },
+            {
+              "name": "hbase_service",
+              "ref": "hbase"
+            }
+          ],
+          "serviceType": "IMPALA"
+        },         
+        {
             "refName": "phoenix",
             "serviceType": "PHOENIX",
             "serviceConfigs": [
@@ -627,6 +731,10 @@
                     "name": "database_host",
                     "variable": "hue-database_host"
                 },
+                {
+                  "name": "impala_service",
+                  "ref": "impala"
+                },                   
                 {
                     "name": "auth_backend",
                     "value": "desktop.auth.backend.PamBackend"
