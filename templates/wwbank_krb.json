@@ -149,8 +149,8 @@
         }
     ],
     "repositories": [
-        "https://archive.cloudera.com/cdh7/7.0/parcels/",
-        "https://archive.cloudera.com/cdh7/{latest_supported}/parcels/"
+            "https://archive.cloudera.com/cdh7/7.0.3.0/parcels/",
+            "https://archive.cloudera.com/cdh7/7.0/parcels/"
     ],
     "services": [
         {
