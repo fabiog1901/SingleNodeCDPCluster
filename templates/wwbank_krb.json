@@ -1,6 +1,6 @@
 {
-    "cdhVersion": "7.0.3",
-    "cmVersion": "7.0.3",
+    "cdhVersion": "7.1.1.0",
+    "cmVersion": "7.1.1",
     "displayName": "WWBank",
     "hostTemplates": [
         {
@@ -143,14 +143,13 @@
         ]
     },
     "products": [
-        {
-            "version": "7.0.3-1.cdh7.0.3.p0.1635019",
+        {               
+            "version": "7.1.1-1.cdh7.1.1.p0.3266817",
             "product": "CDH"
         }
     ],
     "repositories": [
-            "https://archive.cloudera.com/cdh7/7.0.3.0/parcels/",
-            "https://archive.cloudera.com/cdh7/7.0/parcels/"
+            "https://archive.cloudera.com/cdh7/7.1.1.0/parcels/"
     ],
     "services": [
         {
