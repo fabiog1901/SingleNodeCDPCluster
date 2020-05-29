@@ -125,6 +125,15 @@
                 "value": "cloudera"
             },
             {
+                "name": "ranger-RANGER_ADMIN-BASE-ranger_database_user",
+                "value": "ranger"
+            },
+            {
+                "name": "ranger-RANGER_ADMIN-BASE-ranger_database_host",
+                "value": "YourHostname"
+            },
+            
+            {
                 "name": "ranger-keyadmin_user_password",
                 "value": "BadPass#1"
             },
@@ -283,6 +292,18 @@
                     "variable": "ranger-rangerusersync_user_password"
                 },
                 {
+                      "name" : "ranger_database_host",
+                      "variable" : "ranger-RANGER_ADMIN-BASE-ranger_database_host"
+                },
+                {
+                      "name" : "ranger_database_user",
+                      "variable" : "ranger-RANGER_ADMIN-BASE-ranger_database_user"
+                },
+                {
+                       "name": "ranger_database_password",
+                       "variable": "ranger-RANGER_ADMIN-BASE-ranger_database_password"
+                },                  
+                {
                     "name": "keyadmin_user_password",
                     "variable": "ranger-keyadmin_user_password"
                 }
@@ -304,25 +325,6 @@
                         {
                             "name": "log4j_safety_valve",
                             "value": "root.logger=DEBUG,RFA"
-                        }
-                    ],
-                    "base": true
-                },
-                {
-                    "refName": "ranger-RANGER_ADMIN-BASE",
-                    "roleType": "RANGER_ADMIN",
-                    "configs": [
-                        {
-                            "name": "ranger_database_host",
-                            "value": "127.0.0.1"
-                        },
-                        {
-                            "name": "ranger_database_user",
-                            "value": "ranger"
-                        },
-                        {
-                            "name": "ranger_database_password",
-                            "variable": "ranger-RANGER_ADMIN-BASE-ranger_database_password"
                         }
                     ],
                     "base": true
