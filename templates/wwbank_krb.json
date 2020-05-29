@@ -820,6 +820,10 @@
                     "name": "ozone.security.enabled",
                     "value": "true"
                 },
+		{
+                    "name" : "ozone.service.id",
+                    "value" : "ozone1"
+                },
                 {
                     "name": "hdfs_service",
                     "ref": "hdfs"
