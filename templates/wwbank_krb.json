@@ -36,7 +36,6 @@
                 "ozone-OZONE_RECON-BASE",
                 "ozone-STORAGE_CONTAINER_MANAGER-BASE",
                 "phoenix-PHOENIX_QUERY_SERVER-BASE",
-                "ranger-RANGER_ADMIN-BASE",
                 "ranger-RANGER_TAGSYNC-BASE",
                 "ranger-RANGER_USERSYNC-BASE",
                 "solr-SOLR_SERVER-BASE",
