@@ -36,6 +36,7 @@
                 "ozone-OZONE_RECON-BASE",
                 "ozone-STORAGE_CONTAINER_MANAGER-BASE",
                 "phoenix-PHOENIX_QUERY_SERVER-BASE",
+                "ranger-RANGER_ADMIN-BASE",
                 "ranger-RANGER_TAGSYNC-BASE",
                 "ranger-RANGER_USERSYNC-BASE",
                 "solr-SOLR_SERVER-BASE",
@@ -307,6 +308,7 @@
                     "variable": "ranger-keyadmin_user_password"
                 }
             ],
+            
             "roleConfigGroups": [
                 {
                     "refName": "ranger-RANGER_USERSYNC-BASE",
@@ -327,7 +329,18 @@
                         }
                     ],
                     "base": true
-                }
+                },
+                {
+                    "refName": "ranger-RANGER_ADMIN-BASE",
+                    "roleType": "RANGER_ADMIN",
+                    "configs": [
+                        {
+                            "name" : "log_directory_free_space_percentage_thresholds",
+                            "value" : "{\"critical\":\"10.0\",\"warning\":\"20.0\"}"
+                        }
+                    ],
+                    "base": true
+                }                
             ]
         },
         {
