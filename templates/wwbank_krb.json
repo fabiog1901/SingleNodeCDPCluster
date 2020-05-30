@@ -384,11 +384,17 @@
                 {
                     "refName": "livy-LIVY_SERVER-BASE",
                     "roleType": "LIVY_SERVER",
+		     "configs" : [ 
+			     {
+                                "name" : "log_directory_free_space_absolute_thresholds",
+                                "value" : "{\"critical\":\"never\",\"warning\":\"never\"}"
+                            }
+		     ],
                     "base": true
                 }
             ]
         },
-		{
+	{
 		  "refName": "kudu",
 		  "roleConfigGroups": [
 			{
