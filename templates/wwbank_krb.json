@@ -130,7 +130,7 @@
             },
             {
                 "name": "ranger-rangeradmin_ranger_database_host",
-                "value": "YourHostname"
+                "value": "127.0.0.1"
             },
             {
                 "name": "ranger-keyadmin_user_password",
