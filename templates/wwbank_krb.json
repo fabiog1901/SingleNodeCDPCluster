@@ -30,11 +30,13 @@
 		"kudu-KUDU_TSERVER-BASE",                
                 "livy-LIVY_SERVER-BASE",
                 "oozie-OOZIE_SERVER-BASE",
-                "ozone-GATEWAY-BASE",
-                "ozone-OZONE_DATANODE-BASE",
-                "ozone-OZONE_MANAGER-BASE",
-                "ozone-OZONE_RECON-BASE",
-                "ozone-STORAGE_CONTAINER_MANAGER-BASE",
+                "ozone-GATEWAY-BASE", 
+                "ozone-OZONE_DATANODE-BASE", 
+                "ozone-OZONE_MANAGER-BASE", 
+                "ozone-OZONE_PROMETHEUS-BASE", 
+                "ozone-OZONE_RECON-BASE", 
+                "ozone-S3_GATEWAY-BASE", 
+                "ozone-STORAGE_CONTAINER_MANAGER-BASE", 
                 "phoenix-PHOENIX_QUERY_SERVER-BASE",
                 "ranger-RANGER_ADMIN-BASE",
                 "ranger-RANGER_TAGSYNC-BASE",
@@ -837,29 +839,39 @@
             ],
             "roleConfigGroups": [
                 {
-                    "refName": "ozone-GATEWAY-BASE",
-                    "roleType": "GATEWAY",
-                    "base": true
-                },
+                    "base": true, 
+                    "refName": "ozone-GATEWAY-BASE", 
+                    "roleType": "GATEWAY"
+                }, 
                 {
-                    "refName": "ozone-OZONE_RECON-BASE",
-                    "roleType": "OZONE_RECON",
-                    "base": true
-                },
+                    "base": true, 
+                    "refName": "ozone-OZONE_RECON-BASE", 
+                    "roleType": "OZONE_RECON"
+                }, 
                 {
-                    "refName": "ozone-STORAGE_CONTAINER_MANAGER-BASE",
-                    "roleType": "STORAGE_CONTAINER_MANAGER",
-                    "base": true
-                },
+                    "base": true, 
+                    "refName": "ozone-STORAGE_CONTAINER_MANAGER-BASE", 
+                    "roleType": "STORAGE_CONTAINER_MANAGER"
+                }, 
                 {
-                    "refName": "ozone-OZONE_DATANODE-BASE",
-                    "roleType": "OZONE_DATANODE",
-                    "base": true
-                },
+                    "base": true, 
+                    "refName": "ozone-OZONE_DATANODE-BASE", 
+                    "roleType": "OZONE_DATANODE"
+                }, 
                 {
-                    "refName": "ozone-OZONE_MANAGER-BASE",
-                    "roleType": "OZONE_MANAGER",
-                    "base": true
+                    "base": true, 
+                    "refName": "ozone-S3_GATEWAY-BASE", 
+                    "roleType": "S3_GATEWAY"
+                }, 
+                {
+                    "base": true, 
+                    "refName": "ozone-OZONE_MANAGER-BASE", 
+                    "roleType": "OZONE_MANAGER"
+                }, 
+                {
+                    "base": true, 
+                    "refName": "ozone-OZONE_PROMETHEUS-BASE", 
+                    "roleType": "OZONE_PROMETHEUS"
                 }
             ]
         }
