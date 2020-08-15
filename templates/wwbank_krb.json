@@ -26,6 +26,9 @@
 		"impala-IMPALAD-BASE",
 		"impala-STATESTORE-BASE",                
                 "kafka-KAFKA_BROKER-BASE",
+                "knox-GATEWAY-BASE", 
+                "knox-IDBROKER-BASE", 
+                "knox-KNOX_GATEWAY-BASE",                 
 		"kudu-KUDU_MASTER-BASE",
 		"kudu-KUDU_TSERVER-BASE",                
                 "livy-LIVY_SERVER-BASE",
@@ -106,6 +109,14 @@
                 "name": "hue-database_type",
                 "value": "mysql"
             },
+            {
+                "name": "knox-IDBROKER-BASE-idbroker_master_secret", 
+                "value": "BadPass#1"
+            }, 
+            {
+                "name": "knox-KNOX_GATEWAY-BASE-gateway_master_secret", 
+                "value": "BadPass#1"
+            },             
             {
                 "name": "oozie-OOZIE_SERVER-BASE-oozie_database_host",
                 "value": "YourHostname"
@@ -815,6 +826,49 @@
                     "base": true
                 }
             ]
+        },
+        {
+            "refName": "knox", 
+            "roleConfigGroups": [
+                {
+                    "base": true, 
+                    "configs": [
+                        {
+                            "name": "gateway_master_secret", 
+                            "variable": "knox-KNOX_GATEWAY-BASE-gateway_master_secret"
+                        }
+                    ], 
+                    "refName": "knox-KNOX_GATEWAY-BASE", 
+                    "roleType": "KNOX_GATEWAY"
+                }, 
+                {
+                    "base": true, 
+                    "configs": [
+                        {
+                            "name": "idbroker_master_secret", 
+                            "variable": "knox-IDBROKER-BASE-idbroker_master_secret"
+                        }
+                    ], 
+                    "refName": "knox-IDBROKER-BASE", 
+                    "roleType": "IDBROKER"
+                }, 
+                {
+                    "base": true, 
+                    "refName": "knox-GATEWAY-BASE", 
+                    "roleType": "GATEWAY"
+                }
+            ], 
+            "serviceConfigs": [
+                {
+                    "name": "hdfs_service", 
+                    "ref": "hdfs"
+                }, 
+                {
+                    "name": "ranger_service", 
+                    "ref": "ranger"
+                }
+            ], 
+            "serviceType": "KNOX"
         },
         {
             "refName": "ozone",
