@@ -1,8 +1,8 @@
-# Single Node CDP Data Center Cluster 
+# Single Node CDP PVC-Base Cluster 
 
-This script automatically sets up a CDP Data Center Trial cluster on the public cloud on a single VM with the services preconfigured in a template file.
+This script automatically sets up a CDP PVC-Base (aka CDP Data Center) Trial cluster on the public cloud on a single VM with the services preconfigured in a template file. It supports both clusters with or without kerberos.
 
-As this cluster is meant to be used for demos, experimenting, training, and workshops, it doesn't setup Kerberos and TLS.
+This cluster is meant to be used for demos, experimenting, training, and workshops so it is only one node and does not have TLS enabled.
 
 ## Instructions
 
