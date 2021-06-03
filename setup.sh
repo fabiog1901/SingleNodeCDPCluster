@@ -1,4 +1,6 @@
 #! /bin/bash
+start_dir=$PWD
+echo "-- Start dir is ${start_dir}"
 echo "-- Configure and optimize the OS"
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 echo never > /sys/kernel/mm/transparent_hugepage/defrag
@@ -218,7 +220,8 @@ done
 echo "-- Now CM is started and the next step is to automate using the CM API"
 
 pip install --upgrade pip cm_client
-
+echo "-- Kicking off install from ${start_dir}"
+cd ${start_dir}
 sed -i "s/YourHostname/`hostname -f`/g" $TEMPLATE
 sed -i "s/YourCDSWDomain/cdsw.$PUBLIC_IP.nip.io/g" $TEMPLATE
 sed -i "s/YourPrivateIP/`hostname -I | tr -d '[:space:]'`/g" $TEMPLATE
