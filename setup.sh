@@ -68,7 +68,7 @@ sed -i 's/SELINUX=.*/SELINUX=disabled/' /etc/selinux/config
 echo "-- Install CM and MariaDB"
 
 ## CM 7
-wget https://archive.cloudera.com/cm7/7.1.4/redhat7/yum/cloudera-manager-trial.repo -P /etc/yum.repos.d/
+wget https://archive.cloudera.com/cm7/7.4.4/redhat7/yum/cloudera-manager-trial.repo -P /etc/yum.repos.d/
 
 ## MariaDB 10.1
 cat - >/etc/yum.repos.d/MariaDB.repo <<EOF
@@ -219,7 +219,10 @@ done
 
 echo "-- Now CM is started and the next step is to automate using the CM API"
 
-pip install --upgrade pip cm_client
+wget https://bootstrap.pypa.io/pip/2.7/get-pip.py
+python ./get-pip.py
+pip install --upgrade cm_client
+#pip install --upgrade pip cm_client
 echo "-- Kicking off install from ${start_dir}"
 cd ${start_dir}
 sed -i "s/YourHostname/`hostname -f`/g" $TEMPLATE
