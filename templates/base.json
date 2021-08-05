@@ -1,6 +1,6 @@
 {
-   "cdhVersion":"7.1.4.0",
-   "cmVersion":"7.1.4",
+   "cdhVersion":"7.1.7.0",
+   "cmVersion":"7.4.4",
    "displayName":"SingleNodeCluster",
    "hostTemplates":[
       {
@@ -119,11 +119,11 @@
    "products":[
       {
          "product":"CDH",
-         "version":"7.1.4-1.cdh7.1.4.p0.6300266"
+         "version":"7.1.7-1.cdh7.1.7.p0.15945976"
       }
    ],
    "repositories":[
-      "https://archive.cloudera.com/cdh7/7.1.4.0/parcels/"
+      "https://archive.cloudera.com/cdh7/7.1.7.0/parcels/"
    ],
    "services":[
       {
