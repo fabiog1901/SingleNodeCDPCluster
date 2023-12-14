@@ -36,3 +36,7 @@ GRANT ALL ON streamsmsgmgr.* TO 'streamsmsgmgr'@'%' IDENTIFIED BY 'cloudera';
 
 CREATE DATABASE ranger DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON ranger.* TO 'ranger'@'%' IDENTIFIED BY 'cloudera';
+
+GRANT ALL ON ranger.* TO 'rangeradmin'@'%' IDENTIFIED BY 'cloudera';
+
+GRANT ALL ON ranger.* TO 'rangerkms'@'%' IDENTIFIED BY 'cloudera';
