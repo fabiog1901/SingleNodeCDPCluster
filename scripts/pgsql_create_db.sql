@@ -23,6 +23,8 @@ CREATE ROLE oozie LOGIN PASSWORD 'cloudera';
 CREATE DATABASE oozie OWNER oozie ENCODING 'UTF8';
 
 CREATE ROLE ranger LOGIN PASSWORD 'cloudera';
+CREATE ROLE rangeradmin LOGIN PASSWORD 'cloudera';
+CREATE ROLE rangerkms LOGIN PASSWORD 'cloudera';
 CREATE DATABASE ranger OWNER ranger ENCODING 'UTF8';
 
 ALTER DATABASE metastore SET standard_conforming_strings=off;
