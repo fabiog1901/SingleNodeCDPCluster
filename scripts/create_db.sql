@@ -40,3 +40,9 @@ GRANT ALL ON ranger.* TO 'ranger'@'%' IDENTIFIED BY 'cloudera';
 GRANT ALL ON ranger.* TO 'rangeradmin'@'%' IDENTIFIED BY 'cloudera';
 
 GRANT ALL ON ranger.* TO 'rangerkms'@'%' IDENTIFIED BY 'cloudera';
+
+CREATE DATABASE smm DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+GRANT ALL ON smm.* TO 'smm'@'%' IDENTIFIED BY 'cloudera';
+
+CREATE DATABASE schemaregistry DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
+GRANT ALL ON schemaregistry.* TO 'schemaregistry'@'%' IDENTIFIED BY 'cloudera';
