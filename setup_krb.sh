@@ -71,11 +71,11 @@ echo "-- Install CM and MariaDB"
 #wget https://archive.cloudera.com/cm7/7.1.4/redhat7/yum/cloudera-manager-trial.repo -P /etc/yum.repos.d/
 wget https://archive.cloudera.com/cm7/7.4.4/redhat7/yum/cloudera-manager-trial.repo -P /etc/yum.repos.d/
 
-## MariaDB 10.3 -  - 10.4 and above changes from table to view for mysql.user and would needs more changes
+## MariaDB
 cat - >/etc/yum.repos.d/MariaDB.repo <<EOF
 [mariadb]
 name = MariaDB
-baseurl = http://yum.mariadb.org/10.3/centos7-amd64
+baseurl = http://yum.mariadb.org/10.5/centos7-amd64
 gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
 gpgcheck=1
 EOF
