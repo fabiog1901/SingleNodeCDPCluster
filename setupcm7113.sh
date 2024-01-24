@@ -1,4 +1,6 @@
 #! /bin/bash
+# useage: ./setup719.sh aws templates/base.json "your download userID" "your download password
+# Current version of this script is based on centos7.  With mods it should work for later RHEL versions.  Wouldn't need the python 3.8 buid section 
 start_dir=$PWD
 echo "-- Start dir is ${start_dir}"
 echo "-- Configure and optimize the OS"
@@ -16,7 +18,8 @@ yum install -y java-1.8.0-openjdk-devel vim wget curl git bind-utils rng-tools
 yum install -y epel-release
 yum install -y python-pip
 
-# "Install python 3.8 for needed for Hue in 7.1.9 on Centos7 - more recent Linux will have python 3.8+ options"
+# Install python 3.8 for needed for Hue in 7.1.9 on Centos7 - more recent Linux will have python 3.8+ options
+yum install gcc openssl-devel bzip2-devel libffi-devel zlib-devel
 yum install -y gcc-c++ make
 yum install -y libffi-devel
 cd /opt
