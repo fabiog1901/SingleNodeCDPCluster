@@ -38,6 +38,8 @@ chmod -R 755 /usr/local/lib/python3.8
 echo "Environment="PYTHONBIN=/usr/local/bin/python3.8"" >> /usr/lib/systemd/system/cloudera-scm-supervisord.service
 echo "Environment="PYTHONBIN=/usr/local/bin/python3.8"" >> /usr/lib/systemd/system/cloudera-scm-agent.service
 
+pip3.8 install psycopg2-binary
+
 cd /root/Sin*
 
 cp /usr/lib/systemd/system/rngd.service /etc/systemd/system/
@@ -126,7 +128,8 @@ rm -rf ~/mysql-connector-java-5.1.49*
 # Install the MySQL Client
 yum install -y xmlsec1  xmlsec1-openssl
 export PATH=/usr/local/bin:$PATH
-#pip3.8 install mysqlclient
+yum -y install mariadb-devel
+pip3.8 install mysqlclient
 
 echo "-- Create DBs required by CM"
 mysql -u root < scripts/create_db.sql
