@@ -19,7 +19,7 @@ yum install -y epel-release
 yum install -y python-pip
 
 # Install python 3.8 for needed for Hue in 7.1.9 on Centos7 - more recent Linux will have python 3.8+ options
-yum install gcc openssl-devel bzip2-devel libffi-devel zlib-devel
+yum install -y gcc openssl-devel bzip2-devel libffi-devel zlib-devel
 yum install -y gcc-c++ make
 yum install -y libffi-devel
 cd /opt
