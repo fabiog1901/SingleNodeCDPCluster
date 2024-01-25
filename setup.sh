@@ -96,12 +96,17 @@ systemctl enable mariadb
 systemctl start mariadb
 
 echo "-- Install JDBC connector"
-#wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.46.tar.gz -P ~ - trying a slightly newer version below
 wget https://downloads.mysql.com/archives/get/p/3/file/mysql-connector-java-5.1.49.tar.gz -P ~
 tar zxf ~/mysql-connector-java-5.1.49.tar.gz -C ~
 mkdir -p /usr/share/java/
 cp ~/mysql-connector-java-5.1.49/mysql-connector-java-5.1.49-bin.jar /usr/share/java/mysql-connector-java.jar
 rm -rf ~/mysql-connector-java-5.1.49*
+
+# Install the MySQL Client - required for lastest versions of Hue with MySQL-MariaDB - needs a python 3.8 or similar install to work
+#yum install -y xmlsec1  xmlsec1-openssl
+#export PATH=/usr/local/bin:$PATH
+#yum -y install mariadb-devel
+#pip3.8 install mysqlclient
 
 echo "-- Create DBs required by CM"
 mysql -u root < scripts/create_db.sql
