@@ -230,7 +230,13 @@ echo "Set CMURL"
 CMURL=https://$DOWNLOADUSER:$DOWNLOADPASS@archive.cloudera.com/p/cm7/7.11.3.0
 echo $CMURL
 
+# start the CM Manager Agent
+systemctl start cloudera-scm-agent
+echo "waiting 30s for CM Agent to come up..";
+sleep 30;
+
 # Way to involve create_cluster without a download user and pass
+# 719 is behid the paywal and requires a download user pass so this won't work currently for that version
 python scripts/create_cluster.py $TEMPLATE
 
 # Still need to modify create cluster py with CM 7.11.3 URL behind the /p paywall and so it works with passing in the download user and pass
