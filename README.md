@@ -1,42 +1,37 @@
 # Single Node CDP PVC-Base Cluster 
 
-This script automatically sets up a CDP PVC-Base (aka CDP Data Center) Trial cluster on the public cloud on a single VM with the services preconfigured in a template file. It supports both clusters with or without kerberos.
+This script automatically sets up a CDP PVC-Base (aka CDP Data Center) Trial cluster on the public cloud on a single VM with the services preconfigured in a template file. It supports both clusters with or without kerberos.  Trial cluster lcienses last 60 days.  You can install your licnese file for longer use.
 
-This cluster is meant to be used for demos, experimenting, training, and workshops so it is only one node and does not have TLS enabled.
+This cluster is meant to be used for demos, experimenting, training, and workshops so it is only one node and does not have TLS enabled.  One node clusters are not production supported configurations.
 
 ## Instructions
 
-Below are instructions for creating the cluster with or without CDSW service. CDSW requires some extra resources (more powerful instance, and a secondary disk for the docker device).
+Below are instructions for creating the cluster.
 
-### Provisioning Cluster without CDSW
+### Provisioning Cluster
 - Create a Centos 7 VM with at least 8 vCPUs/ 32 GB RAM. Choose the plain vanilla Centos image, not a cloudera-centos image.
-- OS disk size: at least 50 GB.
+- OS disk size: at least 50 GB.  120 GB recommended so you have room for some data.
 
-### Provisioning Cluster with CDSW
-- Create a Centos 7 VM with at least 16 vCPUs/ 64 GB RAM. Choose the plain vanilla Centos image, not a cloudera-centos image.
-- OS disk size: at least 100 GB.
-- Docker device disk: at least 200GB SSD disk.
-  - Note: you need a fast disk more than you need a large disk: aim for a disk with 3000 IOPS. This might mean choosing a 1TB disk.
 
 ### Provisioning Cluster with Trial parcels
 
-Currently, there is no automation process to download parcels for services such as Schema Registry. You need to download the required files from the official Cloudera website on your laptop. Then, sftp the `.parcel`, `.sha` and `.jar` files into the `/home/centos` or `/root` directory. The script takes care of placing these files into the correct folders during installation.
+Currently, there is no automation process to download parcels not in a Cloudera archive repository. You need to download the required files from the official Cloudera website on your laptop. Then, sftp the `.parcel`, `.sha` and `.jar` files into the `/home/centos` or `/root` directory. The script takes care of placing these files into the correct folders during installation.
 
-For example, you can install Schema Registry once your host looks like the below:
+For example, you can install a seperately provided parcel once your host looks like the below:
 
 ```
 $ ls -l /root/
--rwxr-xr-x. 1 centos centos 148855790 Aug  5 18:41 SCHEMAREGISTRY-0.7.0.1.0.0.0-11-el7.parcel
--rw-r--r--. 1 centos centos        41 Aug  5 18:41 SCHEMAREGISTRY-0.7.0.1.0.0.0-11-el7.parcel.sha
--rwxr-xr-x. 1 centos centos     14525 Aug  5 18:41 SCHEMAREGISTRY-0.7.0.jar
+-rwxr-xr-x. 1 centos centos 148855790 Aug  5 18:41 MYPARCEL-0.7.0.1.0.0.0-11-el7.parcel
+-rw-r--r--. 1 centos centos        41 Aug  5 18:41 MYPARCEL-0.7.0.1.0.0.0-11-el7.parcel.sha
+-rwxr-xr-x. 1 centos centos     14525 Aug  5 18:41 MYPARCEL-0.7.0.jar
 ```
 
-To install Schema Registry, you must use an appropriate template file, like `all.json`.
+To install seperate provded parcels, you must provide your own CM template file, like `cmtemplatewithmyapp.json`.
 
 ### Configuration and installation
 - If you created the VM on Azure and need to resize the OS disk, here are the [instructions](scripts/how-to-resize-os-disk.md).
 - add 2 inbound rules to the Security Group:
-  - to allow your IP only, for all ports.
+  - to allow your PC IP only, for all ports.
   - to allow the VM's own IP, for all ports.
 - ssh into VM and copy this repo.
 
@@ -47,72 +42,36 @@ git clone https://github.com/fabiog1901/SingleNodeCDPCluster.git
 cd SingleNodeCDPCluster
 ```
 
-The script `setup.sh` takes 3 arguments:
+The script `setup.sh` takes 3 arguments for the 717 trial and 4 arguments for 719:
 - the cloud provider name: `aws`,`azure`,`gcp`.
 - the template file.
-- OPTIONAL the Docker Device disk mount point.
 
-Example: create cluster without CDSW on AWS using default_template.json
+Example: create 7.1.7 cluster for CentOS 7 on AWS using a default 717 template json
 ```
 $ ./setup.sh aws templates/base.json
 ```
 
-Example: create cluster with CDSW on Azure using cdsw_template.json
+Example: create 7.1.7 cluster for CentOS 7 on Azure using a default 717 template json
 ```
-$ ./setup.sh azure templates/iot_workshop.json /dev/sdc
+$ ./setup.sh azure templates/base.json /dev/sdc
+```
+
+Example: create 7.1.9 cluster for CentOS 7 on AWS using a default 719 template.json
+```
+$ ./setupcm7113.sh aws templates/719base.json <my_download_userID> <my_download_password>
 ```
 
 Wait until the script finishes, check for any error.
 
 ## Use
+Once the script starts creating a cluster, you can open Cloudera Manager at [http://\<public-IP\>:7180](http://<public-IP>:7180)
 
-Once the script returns, you can open Cloudera Manager at [http://\<public-IP\>:7180](http://<public-IP>:7180)
+Wait about 20 minutes for the full cluster install to complete.  You can view the progress in CM.
 
-Wait for about 20-30 mins for CDSW to be ready. You can monitor the status of CDSW by issuing the `cdsw status` command.
-
-You can use `kubectl get pods -n kube-system` to check if all the pods that the role `Master` is suppose to start have really started.
-
-You can also check the CDSW deployment status on CM > CDSW service > Instances > Master role > Processes > stdout.
-
-### Docker device
-
-To find out what the docker device mount point is, use `lsblk`. See below examples:
-
-
-AWS, using a M5.2xlarge or M5.4xlarge
-```
-$ lsblk
-NAME        MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-nvme0n1     259:1    0  100G  0 disk
-+-nvme0n1p1 259:2    0  100G  0 part /
-nvme1n1     259:0    0 1000G  0 disk
-
-$ ./setup.sh aws templates/iot_workshop.json /dev/nvme1n1
+If you want to create your own cluster from the CM UI, comment out the create cluster command at the bottome of the script.  You can login to CM and use the UI to create a cluster with desired services.
 ```
 
-Azure Standard D8s v3 or Standard D16s v3
-```
-$ lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-fd0      2:0    1    4K  0 disk
-sda      8:0    0   30G  0 disk
-+-sda1   8:1    0  500M  0 part /boot
-+-sda2   8:2    0 29.5G  0 part /
-sdb      8:16   0   56G  0 disk
-+-sdb1   8:17   0   56G  0 part /mnt/resource
-sdc      8:32   0 1000G  0 disk
-sr0     11:0    1  628K  0 rom
+## Other
 
-$ ./setup.sh azure templates/iot_workshop.json /dev/sdc
-```
-
-GCP n1-standard-8 or n1-standard-16
-```
-$ lsblk
-NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-sda      8:0    0  100G  0 disk
-└─sda1   8:1    0  100G  0 part /
-sdb      8:16   0 1000G  0 disk
-
-$ ./setup.sh gcp templates/iot_workshop.json /dev/sdb
+You can save a cluster template from a working install. See script in scripts dir.  You will need to edit the template you save slightly to change hostname, passwords, and archive repository locations.  setup scripts and other templates can be used as examples.
 ```
