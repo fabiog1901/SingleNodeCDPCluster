@@ -19,12 +19,12 @@ Currently, there is no automation process to download parcels not in a Cloudera 
 
 For example, you can install a seperately provided parcel once your host looks like the below:
 
-
+```
 $ ls -l /root/
 -rwxr-xr-x. 1 centos centos 148855790 Aug  5 18:41 MYPARCEL-0.7.0.1.0.0.0-11-el7.parcel
 -rw-r--r--. 1 centos centos        41 Aug  5 18:41 MYPARCEL-0.7.0.1.0.0.0-11-el7.parcel.sha
 -rwxr-xr-x. 1 centos centos     14525 Aug  5 18:41 MYPARCEL-0.7.0.jar
-
+```
 
 To install seperate provded parcels, you must provide your own CM template file, like `cmtemplatewithmyapp.json`.
 
