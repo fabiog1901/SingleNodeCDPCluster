@@ -68,10 +68,11 @@ Once the script starts creating a cluster, you can open Cloudera Manager at [htt
 
 Wait about 20 minutes for the full cluster install to complete.  You can view the progress in CM.
 
-If you want to create your own cluster from the CM UI, comment out the create cluster command at the bottome of the script.  You can login to CM and use the UI to create a cluster with desired services.
+If you want to create your own cluster from the CM UI, comment out the create cluster command at the bottom of the script.  
+You can then login to CM and use the UI to create a cluster with desired services.
 ```
 
-## Other
-
-You can save a cluster template from a working install. See script in scripts dir.  You will need to edit the template you save slightly to change hostname, passwords, and archive repository locations.  setup scripts and other templates can be used as examples.
+You can save a cluster template from a working install. See script in scripts dir.
+You will need to edit the template you save slightly to change hostname, passwords, and archive repository locations.
+The setup scripts and other templates can be used as examples.
 ```
