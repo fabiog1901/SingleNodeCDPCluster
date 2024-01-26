@@ -9,6 +9,7 @@ GRANT ALL ON rman.* TO 'rman'@'%' IDENTIFIED BY 'cloudera';
 
 CREATE DATABASE hue DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON hue.* TO 'hue'@'%' IDENTIFIED BY 'cloudera';
+GRANT ALL ON hue.* TO 'hue'@'localhost' identified by 'cloudera';
 
 CREATE DATABASE metastore DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
 GRANT ALL ON metastore.* TO 'hive'@'%' IDENTIFIED BY 'cloudera';
