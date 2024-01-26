@@ -63,13 +63,8 @@
             {
                 "hostName": "YourHostname", 
                 "hostTemplateRefName": "HostTemplate-0-from-YourHostname"
-            }, 
-            {
-                "hostNameRange": "<HOST[0001-0002]>", 
-                "hostTemplateRefName": "HostTemplate-0-from-YourHostname"
             }
         ], 
-        "lenient": false, 
         "variables": [
             {
                 "name": "atlas-ATLAS_SERVER-BASE-atlas_admin_password", 
