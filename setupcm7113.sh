@@ -227,12 +227,13 @@ sed -i "s/DOWNLOADPASS/$DOWNLOADPASS/g" $TEMPLATE
 #sed -i "s/archive\.cloudera\.com/$DOWNLOADUSER:$DOWNLOADPASS@archive\.cloudera.com/" scripts/create_cluster719.py 
 
 # Still need to fix the create_cluster.py to use archive CM repo URL with the download user:pass and latest CM API vseion v54
-# That would start the CM agent with the temaplte. Until then just starting CM agent manually in this script
-# the CMURL varible not used util then.
+# That would start the CM agent with the template. Until then just starting CM agent manually in this script
+# The CMURL varible not used util then.
+# Will get one error that can be ignored when it creates the cluster on adding a host since we are doing that manually currently by starting a CM Agent
 echo "Set CMURL"
 CMURL=https://$DOWNLOADUSER:$DOWNLOADPASS@archive.cloudera.com/p/cm7/7.11.3.0
 echo $CMURL
-# start the CM Manager Agent
+# start the CM Agent
 systemctl start cloudera-scm-agent
 echo "waiting 30s for CM Agent to come up..";
 sleep 30;
