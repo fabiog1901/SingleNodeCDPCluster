@@ -226,20 +226,22 @@ sed -i "s/DOWNLOADPASS/$DOWNLOADPASS/g" $TEMPLATE
 #sed -i "s/YourHostname/`hostname -f`/g" scripts/create_cluster719.py
 #sed -i "s/archive\.cloudera\.com/$DOWNLOADUSER:$DOWNLOADPASS@archive\.cloudera.com/" scripts/create_cluster719.py 
 
+# Still need to fix the create_cluster.py to use archive CM repo URL with the download user:pass and latest CM API vseion v54
+# That would start the CM agent with the temaplte. Until then just starting CM agent manually in this script
+# the CMURL varible not used util then.
 echo "Set CMURL"
 CMURL=https://$DOWNLOADUSER:$DOWNLOADPASS@archive.cloudera.com/p/cm7/7.11.3.0
 echo $CMURL
-
 # start the CM Manager Agent
 systemctl start cloudera-scm-agent
 echo "waiting 30s for CM Agent to come up..";
 sleep 30;
 
-# Way to involve create_cluster without a download user and pass
-# 719 is behid the paywal and requires a download user pass so this won't work currently for that version
+# Way to involve create_cluster with a download user:pass added in the json cluster template
+# 719 is behind the paywall and requires a download user pass so required for that version
+sed -i "s/archive\.cloudera\.com/$DOWNLOADUSER:$DOWNLOADPASS@archive\.cloudera.com\/p/" templates/719base.json
 python scripts/create_cluster.py $TEMPLATE
 
-# Still need to modify create cluster py with CM 7.11.3 URL behind the /p paywall and so it works with passing in the download user and pass
-#python scripts/create_cluster719.py $TEMPLATE $CMURL
+
 
 
