@@ -171,7 +171,8 @@
         }
     ], 
     "repositories": [
-        "https://archive.cloudera.com/p/cdh7/{latest_supported}/parcels/", 
+        "https://archive.cloudera.com/p/cdh7/7.1.9.0/parcels/",
+        "https://archive.cloudera.com/p/cdh7/{latest_supported}/parcels/",
         "https://archive.cloudera.com/cdh7/{latest_supported}/parcels/", 
         "https://parcels.repos.intel.com/mkl/latest", 
         "https://archive.cloudera.com/accumulo-c5/parcels/latest/", 
