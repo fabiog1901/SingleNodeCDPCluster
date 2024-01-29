@@ -237,7 +237,7 @@ systemctl status cloudera-scm-agent
 
 # Way to involve create_cluster with a download user:pass added in the json cluster template
 # 719 is behind the paywall and requires a download user pass so required for that version
-sed -i "s/archive\.cloudera\.com/$DOWNLOADUSER:$DOWNLOADPASS@archive\.cloudera.com\/p/" templates/719base.json
+sed -i "s/archive\.cloudera\.com/$DOWNLOADUSER:$DOWNLOADPASS@archive\.cloudera.com/" templates/719base.json
 python scripts/create_cluster.py $TEMPLATE
 
 
