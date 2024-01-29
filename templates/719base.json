@@ -65,7 +65,6 @@
                 "hostTemplateRefName": "HostTemplate-0-from-YourHostname"
             }
         ], 
-        "lenient": false, 
         "variables": [
             {
                 "name": "atlas-ATLAS_SERVER-BASE-atlas_admin_password", 
@@ -172,14 +171,14 @@
         }
     ], 
     "repositories": [
-        "https://ceadb618-419a-49a1-bf6d-aa4d7053f293:286ad3415a30@archive.cloudera.com/p/cdh7/{latest_supported}/parcels/", 
-        "https://ceadb618-419a-49a1-bf6d-aa4d7053f293:286ad3415a30@archive.cloudera.com/cdh7/{latest_supported}/parcels/", 
+        "https://archive.cloudera.com/p/cdh7/{latest_supported}/parcels/", 
+        "https://archive.cloudera.com/cdh7/{latest_supported}/parcels/", 
         "https://parcels.repos.intel.com/mkl/latest", 
-        "https://ceadb618-419a-49a1-bf6d-aa4d7053f293:286ad3415a30@archive.cloudera.com/accumulo-c5/parcels/latest/", 
-        "https://ceadb618-419a-49a1-bf6d-aa4d7053f293:286ad3415a30@archive.cloudera.com/p/accumulo6/6.1.0/parcels/", 
-        "https://ceadb618-419a-49a1-bf6d-aa4d7053f293:286ad3415a30@archive.cloudera.com/kafka/parcels/latest/", 
-        "http://ceadb618-419a-49a1-bf6d-aa4d7053f293:286ad3415a30@archive.cloudera.com/kudu/parcels/latest/", 
-        "https://ceadb618-419a-49a1-bf6d-aa4d7053f293:286ad3415a30@archive.cloudera.com/p/spark3/3.3.7180.0/parcels/", 
+        "https://archive.cloudera.com/accumulo-c5/parcels/latest/", 
+        "https://archive.cloudera.com/p/accumulo6/6.1.0/parcels/", 
+        "https://archive.cloudera.com/kafka/parcels/latest/", 
+        "http://archive.cloudera.com/kudu/parcels/latest/", 
+        "https://archive.cloudera.com/p/spark3/3.3.7180.0/parcels/", 
         "https://archive.cloudera.com/p/cdh7/{latest_supported}/parcels/", 
         "https://archive.cloudera.com/cdh7/{latest_supported}/parcels/", 
         "https://archive.cloudera.com/accumulo-c5/parcels/latest/", 
