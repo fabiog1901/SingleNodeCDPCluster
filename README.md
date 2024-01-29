@@ -76,3 +76,7 @@ You can save a cluster template from a working install. See script in scripts di
 You will need to edit the template you save slightly to change hostname, passwords, and archive 
 repository locations.
 The setup scripts and other templates can be used as examples.
+
+The health checks in CM will show some errors which are normal since this is single node cluster. CDP was designed to run 
+on clusters with multiple nodes.  For example you could supress the HDFS health check error showing blocks aren't being 
+replicated to another cluster.
