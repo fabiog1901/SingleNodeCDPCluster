@@ -61,6 +61,17 @@ Example: create 7.1.9 cluster for CentOS 7 on AWS using a default 719 template.j
 $ ./setupcm7113.sh aws templates/719base.json <my_download_userID> <my_download_password>
 ```
 
+Example: create 7.1.7 kerberized cluster for CentOS 7 on AWS using a default template
+```
+$ curl -sSL https://gist.github.com/abajwa-hw/bca3d23fe146c3ebd59a9b5fd19480a3/raw | sudo -E sh
+$ ./setup_krb.sh aws templates/wwbank_krb.json
+
+#Optional - Setup worldwide bank demo using script
+$ curl -sSL https://raw.githubusercontent.com/abajwa-hw/masterclass/master/ranger-atlas/setup-dc-703.sh | sudo -E bash
+#demo instructions:
+https://community.cloudera.com/t5/Community-Articles/How-to-setup-Cloudera-Security-Governance-GDPR-Worldwide/ta-p/297315
+```
+
 Wait until the script finishes, check for any error.
 
 ## Use
