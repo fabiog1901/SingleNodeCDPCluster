@@ -46,6 +46,8 @@ The script `setup.sh` takes 3 arguments for the 717 trial and 4 arguments for 71
 - the cloud provider name: `aws`,`azure`,`gcp`.
 - the template file.
 
+Wait until the script finishes, check for any errors - a few of them are normal errors.
+
 Example: create 7.1.7 cluster for CentOS 7 on AWS using a default 717 template json
 ```
 $ ./setup.sh aws templates/base.json
@@ -72,9 +74,8 @@ $ curl -sSL https://raw.githubusercontent.com/abajwa-hw/masterclass/master/range
 https://community.cloudera.com/t5/Community-Articles/How-to-setup-Cloudera-Security-Governance-GDPR-Worldwide/ta-p/297315
 ```
 
-Wait until the script finishes, check for any error.
 
-## Use
+## Use Notes
 Once the script starts creating a cluster, you can open Cloudera Manager at [http://\<public-IP\>:7180](http://<public-IP>:7180)
 
 Wait about 20 minutes for the full cluster install to complete.  You can view the progress in CM.
@@ -83,10 +84,10 @@ If you want to create your own cluster from the CM UI, comment out the create cl
 bottom of the script.  
 You can then login to CM and use the UI to create a cluster with desired services.
 
-You can save a cluster template from a working install. See script in scripts dir.
-You will need to edit the template you save slightly to change hostname, passwords, and archive 
-repository locations.
-The setup scripts and other templates can be used as examples.
+You can save a cluster template from a working install. See save_template.py in scripts dir. Change cluster name in script 
+if you are using a different cluster name.  You will need to edit the saved template you save slightly to change hostname, 
+passwords, archive repository locations, and a couple of others. Delete the cluster node list snipet. The other templates 
+can be used as examples.
 
 The health checks in CM will show some errors which are normal since this is single node cluster. CDP was designed to run 
 on clusters with multiple nodes.  For example you could supress the HDFS health check error showing blocks aren't being 
