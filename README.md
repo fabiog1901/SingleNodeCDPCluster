@@ -101,7 +101,8 @@ You can then login to CM and use the UI to create a cluster with desired service
 You can save a cluster template from a working install. See save_template.py in scripts dir. Change cluster name in script 
 if you are using a different cluster name.  You will need to edit the saved template you save slightly to change hostname, 
 passwords, archive repository locations, and a couple of others. Delete the cluster node list snipet. The other templates 
-can be used as examples.
+can be used as examples. When saving a template from an install that used your download user:pass make sure to remove that
+private info before sharing the template with others.
 
 The health checks in CM will show some errors which are normal since this is single node cluster. CDP was designed to run 
 on clusters with multiple nodes.  For example you could supress the HDFS health check error showing blocks aren't being 
