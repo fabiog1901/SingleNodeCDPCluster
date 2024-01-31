@@ -40,11 +40,15 @@ sudo su -
 yum install -y git
 git clone https://github.com/fabiog1901/SingleNodeCDPCluster.git
 cd SingleNodeCDPCluster
+chmod 755 setup*.sh
 ```
+Run the desired setup script for yor install.
 
-The script `setup.sh` takes 3 arguments for the 717 trial and 4 arguments for 719:
-- the cloud provider name: `aws`,`azure`,`gcp`.
-- the template file.
+The scripts `setup*.sh` takes 2 arguments for the 717 trial and 4 arguments for 719:
+- arg1 the cloud provider name: `aws`,`azure`,`gcp`.  `gcp` also works for many others.
+- arg2 the template file.
+- arg3 the download user ID - not used for trial download releases outside the paywall
+- arg4 the download password - not used for trial download releases outside the paywall
 
 Wait until the script finishes, check for any errors - a few of them are normal errors.
 
@@ -55,7 +59,7 @@ $ ./setup.sh aws templates/base.json
 
 Example: create 7.1.7 cluster for CentOS 7 on Azure using a default 717 template json
 ```
-$ ./setup.sh azure templates/base.json /dev/sdc
+$ ./setup.sh azure templates/base.json
 ```
 
 Example: create 7.1.9 cluster for CentOS 7 on AWS using a default 719 template.json
