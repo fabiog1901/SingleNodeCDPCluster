@@ -1,6 +1,6 @@
 # Single Node CDP PVC-Base Cluster 
 
-This script automatically sets up a CDP PVC-Base (aka CDP Data Center) Trial cluster on the public cloud on a single VM with the services preconfigured in a template file. It supports both clusters with or without kerberos.  Trial cluster lcienses last 60 days.  You can install your licnese file for longer use.
+This script automatically sets up a CDP PVC-Base (aka CDP Data Center) Trial cluster on the public cloud on a single VM with the services preconfigured in a template file. It supports both clusters with or without kerberos.  Trial cluster licenses last 60 days.  You can install your own license file for longer use.
 
 This cluster is meant to be used for demos, experimenting, training, and workshops so it is only one node and does not have TLS enabled.  One node clusters are not production supported configurations.
 
