@@ -68,12 +68,22 @@ Example: create 7.1.7 kerberized cluster for CentOS 7 on AWS using a default tem
 $ curl -sSL https://gist.github.com/abajwa-hw/bca3d23fe146c3ebd59a9b5fd19480a3/raw | sudo -E sh
 $ ./setup_krb.sh aws templates/wwbank_krb.json
 
-#Optional - Setup worldwide bank demo using script
+#Optional - Add worldwide bank demo using script
 $ curl -sSL https://raw.githubusercontent.com/abajwa-hw/masterclass/master/ranger-atlas/setup-dc-703.sh | sudo -E bash
 #demo instructions:
 https://community.cloudera.com/t5/Community-Articles/How-to-setup-Cloudera-Security-Governance-GDPR-Worldwide/ta-p/297315
 ```
 
+Example: create 7.1.9 kerberized cluster for CentOS 7 on AWS using a default template
+```
+$ curl -sSL https://gist.github.com/abajwa-hw/bca3d23fe146c3ebd59a9b5fd19480a3/raw | sudo -E sh
+$ ./setupcm7113krb.sh aws templates/wwbank_krb719.json <my_download_userID> <my_download_password>
+
+#Optional - Add worldwide bank demo using script
+$ curl -sSL https://raw.githubusercontent.com/abajwa-hw/masterclass/master/ranger-atlas/setup-dc-703.sh | sudo -E bash
+#demo instructions:
+https://community.cloudera.com/t5/Community-Articles/How-to-setup-Cloudera-Security-Governance-GDPR-Worldwide/ta-p/297315
+```
 
 ## Use Notes
 Once the script starts creating a cluster, you can open Cloudera Manager at [http://\<public-IP\>:7180](http://<public-IP>:7180)
